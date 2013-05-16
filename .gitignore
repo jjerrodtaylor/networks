@@ -6,3 +6,4 @@
 .class
 *.ipr
 *.iws
+*/.idea
