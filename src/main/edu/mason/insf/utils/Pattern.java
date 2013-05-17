@@ -1,5 +1,9 @@
-package main.java.edu.mason.insf.utils;
+package edu.mason.insf.utils;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -138,6 +142,72 @@ public class Pattern<T> {
     public void setOutputPatternValue(T value)
     {
         this.getOutputSet().add(value);
+    }
+
+    /**
+     *
+     * @param filepath
+     * @return
+     */
+    public ArrayList<String> readFileToMemory(String filepath)
+    {
+        BufferedReader br = null;
+        String currentLine = null;
+        ArrayList<String> fileContents = new ArrayList<String>();
+
+        try
+        {
+            br = new BufferedReader(new FileReader(filepath));
+            while((currentLine = br.readLine()) != null)
+            {
+                //fileContents.add(br.readLine());
+                fileContents.add(currentLine);
+            }
+
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+        }
+        finally
+        {
+            try
+            {
+                br.close();
+            }
+            catch(IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+        return fileContents;
+    }
+
+    /**
+     *
+     * @param listOfStrings
+     * @return
+     */
+    public String turnListToString(ArrayList<String> listOfStrings)
+    {
+        String longString = "";
+
+        for(int i =0; i < listOfStrings.size()-1; i++)
+        {
+            longString += listOfStrings.get(i);
+        }
+        return longString;
+    }
+
+    /**
+     *
+     * @param s
+     * @return
+     */
+    public String[] splitString(String s)
+    {
+        return s.split("(?!^)");
     }
 
 }
