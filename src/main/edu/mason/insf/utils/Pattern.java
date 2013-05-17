@@ -86,7 +86,7 @@ public class Pattern<T> {
      *
      * @param inputSet
      */
-    public void setInputSet(LinkedList inputSet) {
+    public void setInputSet(LinkedList<T> inputSet) {
         this.inputSet = inputSet;
     }
 
@@ -102,7 +102,7 @@ public class Pattern<T> {
      *
      * @param outputSet
      */
-    public void setOutputSet(LinkedList outputSet) {
+    public void setOutputSet(LinkedList<T> outputSet) {
         this.outputSet = outputSet;
     }
 
