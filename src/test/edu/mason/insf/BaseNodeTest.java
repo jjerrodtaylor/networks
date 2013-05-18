@@ -59,4 +59,20 @@ public class BaseNodeTest {
         baseNode.setOutLinks(outLinks);
         assertEquals(outLinks.get(0),baseNode.getOutLinks().get(0));
     }
+
+    @Test
+    public void testCreateLinkTo()
+    {
+        BaseNode nodeA = new BaseNode();
+        BaseNode nodeB = new BaseNode();
+
+        nodeA.createLinkTo(nodeB);
+        nodeB.createLinkTo(nodeA);
+
+        //node A's outlink should be node B's in link
+        assertEquals(nodeA.getOutLinks().get(0), nodeB.getInLinks().get(0));
+
+        //node A's inlink should be node B's out link
+        assertEquals(nodeA.getInLinks().get(0), nodeB.getOutLinks().get(0));
+    }
 }

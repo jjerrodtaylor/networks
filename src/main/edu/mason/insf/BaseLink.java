@@ -9,13 +9,27 @@ package edu.mason.insf;
  */
 public  class BaseLink {
 
-    private int ticket;
+    private int ticket=0;
 
     protected int id;
     protected double value;
     protected BaseNode inNode;
     protected BaseNode outNode;
     protected int valueSize;
+
+    public BaseLink()
+    {
+        super();
+        id=++ticket;
+    }
+
+    public int getValueSize() {
+        return valueSize;
+    }
+
+    public void setValueSize(int valueSize) {
+        this.valueSize = valueSize;
+    }
 
     public double getValue()
     {
@@ -27,18 +41,17 @@ public  class BaseLink {
         this.value = value;
     }
 
-    public void setInNode(BaseNode node, int id)
+    //the original method signature. I'm not sure what you need the id for
+    //public void setInNode(BaseNode node, int id)
+    public void setInNode(BaseNode node)
     {
-
+        this.inNode = node;
     }
 
-    public void setOutNode(BaseNode node, int id)
+    //the original method signature. I'm not sure what you need the id for
+    //public void setOutNode(BaseNode node, int id)
+    public void setOutNode(BaseNode node)
     {
-
+        this.outNode = node;
     }
-
-    //public abstract void setInNode(BaseNode node, int id);
-
-    //public abstract void setOutNode(BaseNode node, int id);
-
 }

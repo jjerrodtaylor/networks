@@ -98,8 +98,21 @@ public class BaseNode {
     {
         outLinks.add(link);
         toNode.getInLinks().add(link);
-        link.setOutNode(toNode, toNode.getId());
-        link.setInNode(this, this.id);
+        //link.setOutNode(toNode, toNode.getId());
+        //link.setInNode(this, this.id);
+        link.setOutNode(toNode);
+        link.setInNode(this);
+    }
+
+    public void createLinkTo(BaseNode toNode)
+    {
+        BaseLink link = new BaseLink();
+        outLinks.add(link);
+        toNode.getInLinks().add(link);
+        //link.setOutNode(toNode, toNode.getId());
+        //link.setInNode(this, this.id);
+        link.setOutNode(toNode);
+        link.setInNode(this);
     }
 
 }
