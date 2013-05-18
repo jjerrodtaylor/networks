@@ -18,8 +18,13 @@ public class BaseNode {
     protected int valueSize;
     protected double error;
     protected int errorSize;
-    protected LinkedList inLinks;     //List for input Links
-    protected LinkedList outLinks;    //List for output links
+    protected LinkedList<BaseLink> inLinks = new LinkedList<BaseLink>();     //List for input Links
+    protected LinkedList<BaseLink> outLinks = new LinkedList<BaseLink>();    //List for output links
+
+    public BaseNode()
+    {
+        super();
+    }
 
     public double getValue()
     {
@@ -46,14 +51,22 @@ public class BaseNode {
         return id;
     }
 
-    public LinkedList getInLinks()
+    public LinkedList<BaseLink> getInLinks()
     {
         return inLinks;
     }
 
-    public LinkedList getOutLinks()
+    public LinkedList<BaseLink> getOutLinks()
     {
         return outLinks;
+    }
+
+    public void setInLinks(LinkedList<BaseLink> inLinks) {
+        this.inLinks = inLinks;
+    }
+
+    public void setOutLinks(LinkedList<BaseLink> outLinks) {
+        this.outLinks = outLinks;
     }
 
     public void setValueSize(int valueSize)
@@ -74,6 +87,19 @@ public class BaseNode {
     public int getErrorSize()
     {
         return errorSize;
+    }
+
+    /**
+     * Create a link from this node to another node
+     * @param toNode
+     * @param link
+     */
+    public void createLinkTo(BaseNode toNode, BaseLink link)
+    {
+        outLinks.add(link);
+        toNode.getInLinks().add(link);
+        link.setOutNode(toNode, toNode.getId());
+        link.setInNode(this, this.id);
     }
 
 }

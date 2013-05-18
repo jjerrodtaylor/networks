@@ -1,9 +1,7 @@
 package edu.mason.insf;
 import edu.mason.insf.utils.Pattern;
 import org.junit.Test;
-
 import java.util.LinkedList;
-
 import static org.junit.Assert.assertEquals;
 
 
@@ -15,7 +13,7 @@ import static org.junit.Assert.assertEquals;
  * Time: 10:27 PM
  * To change this template use File | Settings | File Templates.
  */
-public class TestPattern
+public class PatternTest
 {
     public Pattern<Integer> testPattern = new Pattern<Integer>();
 
@@ -47,7 +45,7 @@ public class TestPattern
         inputSet.add(1);
 
         testPattern.setInputSet(inputSet);
-        assertEquals((int)1, (int)testPattern.getInputSet().get(1));
+        assertEquals((int)1, (int)testPattern.getInputSet().get(0));
 
     }
 
@@ -58,12 +56,6 @@ public class TestPattern
         outputSet.add(2);
 
         testPattern.setOutputSet(outputSet);
-        assertEquals((int)2, (int)testPattern.getOutputSet().get(1));
+        assertEquals((int)2, (int)testPattern.getOutputSet().get(0));
     }
-
-
-
-
-
-
 }

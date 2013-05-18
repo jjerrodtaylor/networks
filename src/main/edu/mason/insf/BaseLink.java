@@ -27,6 +27,16 @@ public  class BaseLink {
         this.value = value;
     }
 
+    public void setInNode(BaseNode node, int id)
+    {
+
+    }
+
+    public void setOutNode(BaseNode node, int id)
+    {
+
+    }
+
     //public abstract void setInNode(BaseNode node, int id);
 
     //public abstract void setOutNode(BaseNode node, int id);
