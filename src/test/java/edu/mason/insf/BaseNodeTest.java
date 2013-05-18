@@ -1,4 +1,4 @@
-package java.edu.mason.insf;
+package edu.mason.insf;
 import org.junit.Test;
 import java.util.LinkedList;
 import static org.junit.Assert.assertEquals;

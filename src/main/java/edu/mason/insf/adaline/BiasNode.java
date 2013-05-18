@@ -1,4 +1,4 @@
-package java.edu.mason.insf.adaline;
+package edu.mason.insf.adaline;
 
 /**
  * Created with IntelliJ IDEA.

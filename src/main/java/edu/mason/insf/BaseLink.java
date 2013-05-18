@@ -1,4 +1,4 @@
-package java.edu.mason.insf;
+package edu.mason.insf;
 
 /**
  * Created with IntelliJ IDEA.
