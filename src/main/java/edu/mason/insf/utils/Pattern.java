@@ -1,4 +1,4 @@
-package edu.mason.insf.utils;
+package java.edu.mason.insf.utils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

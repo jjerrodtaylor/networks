@@ -1,11 +1,11 @@
-package edu.mason.insf;
+package java.edu.mason.insf.adaline;
 
 /**
  * Created with IntelliJ IDEA.
  * User: jamaaltaylor
- * Date: 5/17/13
- * Time: 7:20 PM
+ * Date: 5/18/13
+ * Time: 1:07 AM
  * To change this template use File | Settings | File Templates.
  */
-public class BaseLinkTest {
+public class BiasNode {
 }

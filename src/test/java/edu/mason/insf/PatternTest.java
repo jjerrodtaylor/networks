@@ -1,5 +1,5 @@
-package edu.mason.insf;
-import edu.mason.insf.utils.Pattern;
+package java.edu.mason.insf;
+import java.edu.mason.insf.utils.Pattern;
 import org.junit.Test;
 import java.util.LinkedList;
 import static org.junit.Assert.assertEquals;
