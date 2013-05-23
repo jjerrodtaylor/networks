@@ -8,4 +8,11 @@ package edu.mason.insf;
  * To change this template use File | Settings | File Templates.
  */
 public class BaseLinkTest {
+
+    BaseLink link = new BaseLink();
+
+    public void testInNode()
+    {
+
+    }
 }
