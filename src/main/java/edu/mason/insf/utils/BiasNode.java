@@ -14,15 +14,15 @@ public class BiasNode extends InputNode
         super();
     }
 
-    public void setValue()
+    final public void setValue(double value)
     {
-
+        this.value = value;
     }
 
 
     public double getValue()
     {
-        return 0.0;
+        return this.value;
     }
 
 }
