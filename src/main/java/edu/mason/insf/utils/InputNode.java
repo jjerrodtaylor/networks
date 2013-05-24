@@ -16,6 +16,12 @@ public class InputNode extends BaseNode {
         super();
     }
 
+    public InputNode(double value)
+    {
+        super();
+        this.value = value;
+    }
+
     public InputNode(double value, double error)
     {
         super();
