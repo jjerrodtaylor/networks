@@ -1,6 +1,6 @@
-package edu.mason.insf.utils;
+package edu.mason.insf.ann.utils;
 
-import edu.mason.insf.BaseNode;
+import edu.mason.insf.ann.BaseNode;
 
 /**
  * Created with IntelliJ IDEA.

@@ -1,6 +1,6 @@
-package edu.mason.insf.utils;
+package edu.mason.insf.ann.utils;
 
-import edu.mason.insf.BaseNode;
+import edu.mason.insf.ann.BaseNode;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,7 +23,8 @@ public class FeedForwardNode extends BaseNode
 
     public void run(int mode)
     {
-
+        double total = 0;
+        //inLinks
     }
 
     public String getName()

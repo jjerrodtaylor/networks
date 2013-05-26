@@ -1,4 +1,4 @@
-package edu.mason.insf;
+package edu.mason.insf.ann;
 
 import java.util.LinkedList;
 
