@@ -1,4 +1,6 @@
 package edu.mason.insf;
+import edu.mason.insf.ann.BaseLink;
+import edu.mason.insf.ann.BaseNode;
 import org.junit.Test;
 import java.util.LinkedList;
 import static org.junit.Assert.assertEquals;

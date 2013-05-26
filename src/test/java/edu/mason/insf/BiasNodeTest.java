@@ -1,6 +1,8 @@
 package edu.mason.insf;
 
-import edu.mason.insf.utils.BiasNode;
+import edu.mason.insf.ann.BaseLink;
+import edu.mason.insf.ann.BaseNode;
+import edu.mason.insf.ann.utils.BiasNode;
 import org.junit.Test;
 import java.util.LinkedList;
 import static org.junit.Assert.assertEquals;

@@ -1,5 +1,7 @@
 package edu.mason.insf;
 
+import edu.mason.insf.ann.BaseLink;
+
 /**
  * Created with IntelliJ IDEA.
  * User: jamaaltaylor
