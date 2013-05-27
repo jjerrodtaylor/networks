@@ -25,4 +25,9 @@ public class BiasNode extends InputNode
         return this.value;
     }
 
+    public String getName()
+    {
+        return "BiasNode";
+    }
+
 }

@@ -29,6 +29,6 @@ public class FeedForwardNode extends BaseNode
 
     public String getName()
     {
-        return "";
+        return "FeedForwardNode";
     }
 }

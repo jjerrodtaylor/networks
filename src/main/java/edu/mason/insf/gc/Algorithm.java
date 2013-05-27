@@ -1,11 +1,11 @@
-package edu.mason.insf.ann;
+package edu.mason.insf.gc;
 
 /**
  * Created with IntelliJ IDEA.
  * User: jamaaltaylor
- * Date: 5/25/13
- * Time: 11:00 PM
+ * Date: 5/26/13
+ * Time: 9:36 PM
  * To change this template use File | Settings | File Templates.
  */
-public class Gene {
+public class Algorithm {
 }

@@ -25,4 +25,14 @@ public class Gene {
             geneBits.add(GCHelper.generateRandomInteger(0,1));
         }
     }
+
+    public void mutate()
+    {
+
+    }
+
+    public Gene crossover()
+    {
+
+    }
 }

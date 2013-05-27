@@ -30,4 +30,9 @@ public class InputNode extends BaseNode {
 
     }
 
+    public String getName()
+    {
+        return "InputNode";
+    }
+
 }

@@ -21,7 +21,5 @@ public interface INode {
 
     public void createLinkTo(BaseNode toNode, BaseLink link);
 
-    public void connect(BaseNode fromNode, BaseNode toNode, BaseLink link);
-
     public void disconnect(BaseNode fromNode, BaseNode toNode);
 }
