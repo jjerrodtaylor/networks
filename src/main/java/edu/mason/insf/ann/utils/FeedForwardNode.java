@@ -24,7 +24,12 @@ public class FeedForwardNode extends BaseNode
     public void run(int mode)
     {
         double total = 0;
-        //inLinks
+        int count = inLinks.size();
+
+        for(int i = 0; i< count; i++)
+        {
+            //total += inLinks.get(i).
+        }
     }
 
     public String getName()
