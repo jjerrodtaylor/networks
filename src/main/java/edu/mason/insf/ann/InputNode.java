@@ -1,4 +1,4 @@
-package edu.mason.insf.ann.utils;
+package edu.mason.insf.ann;
 
 import edu.mason.insf.ann.BaseNode;
 

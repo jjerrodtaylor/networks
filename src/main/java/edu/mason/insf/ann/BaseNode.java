@@ -3,18 +3,26 @@ package edu.mason.insf.ann;
 import java.util.LinkedList;
 
 /**
- * Created with IntelliJ IDEA.
- * User: jamaaltaylor
- * Date: 5/15/13
- * Time: 8:46 PM
- * To change this template use File | Settings | File Templates.
+ * Class that represents attributes that are common across all neural network architechtures.
+ * The BaseNode class manages the receiving of input values and the distribution of the processed information to other
+ * nodes in the network. THe BaseNode class does NOT define how the node objects process information; this task is left
+ * to the BaseNode progeny.
  */
 public class BaseNode {
 
     private int ticket;
 
     protected int id;
-    protected double value;
+
+    /*
+    * The network node values define the network's state and result from the nodes processing input values. To
+    * facilitate the implementation of various neural-network architechtures, a set of values is used for each instead
+     * of a single value. If only one value is needed in the node object, the set will simply have a size of one. The
+     * size of the value set is specified at the object's instantiation so no memory is wasted on unneeded array slots.
+     * These operations take an id parameter specifying which value in the set is to be changed or retrieved.
+    *
+    * */
+    protected Double[] value;
     protected int valueSize;
     protected double error;
     protected int errorSize;
@@ -26,12 +34,12 @@ public class BaseNode {
         super();
     }
 
-    public double getValue()
+    public Double[] getValue()
     {
         return value;
     }
 
-    public void setValue(double value)
+    public void setValue(Double[] value)
     {
         this.value = value;
     }
@@ -98,19 +106,15 @@ public class BaseNode {
     {
         outLinks.add(link);
         toNode.getInLinks().add(link);
-        //link.setOutNode(toNode, toNode.getId());
-        //link.setInNode(this, this.id);
         link.setOutNode(toNode);
         link.setInNode(this);
     }
 
     public void createLinkTo(BaseNode toNode)
     {
-        BaseLink link = new BaseLink();
+        BaseLink link = new BaseLink(0);
         outLinks.add(link);
         toNode.getInLinks().add(link);
-        //link.setOutNode(toNode, toNode.getId());
-        //link.setInNode(this, this.id);
         link.setOutNode(toNode);
         link.setInNode(this);
     }

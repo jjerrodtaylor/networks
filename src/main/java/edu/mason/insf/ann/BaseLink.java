@@ -80,12 +80,12 @@ public  class BaseLink {
 
     }
 
-    public double getInValue(int nodeValue)
+    public Double[] getInValue(int nodeValue)
     {
         return inNode.getValue();
     }
 
-    public double getOutValue()
+    public Double[] getOutValue()
     {
         return outNode.getValue();
     }
@@ -100,23 +100,23 @@ public  class BaseLink {
         return outNode.getError();
     }
 
-    public double weightedInValue(int nodeValue)
+    public double weightedInValue()
     {
         //I don't understand why you get the value at weight yet. But hopefully I will later
         return inNode.getValue() * value[WEIGHT];
     }
 
-    public double weightedOutValue(int nodeValue)
+    public double weightedOutValue()
     {
         return outNode.getValue() * value[WEIGHT];
     }
 
-    public double weightedInError(int nodeValue)
+    public double weightedInError()
     {
         return inNode.getError() * value[WEIGHT];
     }
 
-    public double weightedOutError(int nodeValue)
+    public double weightedOutError()
     {
         return outNode.getError() * value[WEIGHT];
     }

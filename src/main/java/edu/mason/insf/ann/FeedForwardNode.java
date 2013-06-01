@@ -1,4 +1,4 @@
-package edu.mason.insf.ann.utils;
+package edu.mason.insf.ann;
 
 import edu.mason.insf.ann.BaseNode;
 
@@ -28,7 +28,7 @@ public class FeedForwardNode extends BaseNode
 
         for(int i = 0; i< count; i++)
         {
-            //total += inLinks.get(i).
+            total += inLinks.get(i).weightedInValue();
         }
     }
 
