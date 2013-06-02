@@ -1,5 +1,6 @@
 package edu.mason.insf.ann;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
@@ -22,9 +23,9 @@ public class BaseNode {
      * These operations take an id parameter specifying which value in the set is to be changed or retrieved.
     *
     * */
-    protected Double[] value;
+    protected ArrayList<Double> value;
     protected int valueSize;
-    protected double error;
+    protected ArrayList<Double> error;
     protected int errorSize;
     protected LinkedList<BaseLink> inLinks = new LinkedList<BaseLink>();     //List for input Links
     protected LinkedList<BaseLink> outLinks = new LinkedList<BaseLink>();    //List for output links
@@ -34,24 +35,24 @@ public class BaseNode {
         super();
     }
 
-    public Double[] getValue()
+    public Double getValue(int id)
     {
-        return value;
+        return value.get(id);
     }
 
-    public void setValue(Double[] value)
+    public void setValue(int id, Double newValue)
     {
-        this.value = value;
+        this.value.add(id,newValue);
     }
 
-    public double getError()
+    public double getError(int id)
     {
-        return error;
+        return this.error.get(id);
     }
 
-    public void setError(double error)
+    public void setError(int id, Double newError)
     {
-        this.error = error;
+        this.error.add(id, newError);
     }
 
     public int getId()

@@ -1,5 +1,7 @@
 package edu.mason.insf.ann;
 
+import java.util.ArrayList;
+
 /**
  * User: jamaaltaylor
  * Date: 5/15/13
@@ -13,7 +15,7 @@ public  class BaseLink {
 
     public static final Integer WEIGHT = 0;
     protected int id;
-    protected Double[] value;
+    protected ArrayList<Double> value;
     protected BaseNode inNode;
     protected BaseNode outNode;
     protected int valueSize;
@@ -29,12 +31,12 @@ public  class BaseLink {
         }
         else
         {
-            value = new Double [valueSize];
+            value = new ArrayList<Double>();
         }
 
         for(int i = 0; i < valueSize; i++)
         {
-            value[i] = 0.0;
+            this.value.add(i,0.0);
         }
 
         inNode = null;
@@ -51,14 +53,14 @@ public  class BaseLink {
         this.valueSize = valueSize;
     }
 
-    public Double[] getValue()
+    public Double getValue(int id)
     {
-        return value;
+        return value.get(id);
     }
 
-    public void setValue(Double[] value)
+    public void setValue(int id, double newValue)
     {
-        this.value = value;
+        this.value.add(id, newValue);
     }
 
     //the original method signature. I'm not sure what you need the id for
@@ -80,49 +82,45 @@ public  class BaseLink {
 
     }
 
-    public Double[] getInValue(int nodeValue)
+    public Double getInValue(int nodeValue)
     {
-        return inNode.getValue();
+        return inNode.getValue(nodeValue);
     }
 
-    public Double[] getOutValue()
+    public Double getOutValue(int nodeValue)
     {
-        return outNode.getValue();
+        return outNode.getValue(nodeValue);
     }
 
-    public double getInError()
+    public Double getInError(int nodeValue)
     {
-        return inNode.getError();
+        return inNode.getError(nodeValue);
     }
 
-    public double outError()
+    public Double getOutError(int nodeValue)
     {
-        return outNode.getError();
+        return outNode.getError(nodeValue);
     }
 
-    public double weightedInValue()
+    public Double weightedInValue(int nodeValue)
     {
         //I don't understand why you get the value at weight yet. But hopefully I will later
-        return inNode.getValue() * value[WEIGHT];
+        return inNode.getValue(nodeValue) * value[WEIGHT];
     }
 
-    public double weightedOutValue()
+    public Double weightedOutValue(int nodeValue)
     {
-        return outNode.getValue() * value[WEIGHT];
+        return outNode.getValue(nodeValue) * value[WEIGHT];
     }
 
-    public double weightedInError()
+    public Double weightedInError(int nodeValue)
     {
-        return inNode.getError() * value[WEIGHT];
+        return inNode.getError(nodeValue) * value[WEIGHT];
     }
 
-    public double weightedOutError()
+    public Double weightedOutError(int nodeValue)
     {
-        return outNode.getError() * value[WEIGHT];
+        return outNode.getError(nodeValue) * value[WEIGHT];
     }
 
-    //public int getSetSize()
-    //{
-
-    //}
 }
