@@ -30,9 +30,11 @@ public class BaseNode {
     protected LinkedList<BaseLink> inLinks = new LinkedList<BaseLink>();     //List for input Links
     protected LinkedList<BaseLink> outLinks = new LinkedList<BaseLink>();    //List for output links
 
-    public BaseNode()
+    public BaseNode(int valueSize, int errorSize)
     {
         super();
+        this.valueSize = valueSize;
+        this.errorSize = errorSize;
     }
 
     public Double getValue(int id)

@@ -9,4 +9,5 @@ public class Constants {
     public static int LEARNING_RATE = 1;
     public static int NODE_ERROR = 0;
     public static int WEIGHT = 0;
+    public static int MODE = 2;
 }

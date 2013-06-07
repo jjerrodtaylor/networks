@@ -1,5 +1,7 @@
 package edu.mason.insf.ann;
 
+import edu.mason.insf.ann.utils.Constants;
+
 import java.util.ArrayList;
 
 /**
@@ -79,7 +81,7 @@ public  class BaseLink {
 
     public void updateWeight(double newVal)
     {
-
+        this.setValue(Constants.WEIGHT, newVal);
     }
 
     public Double getInValue(int nodeValue)
@@ -105,22 +107,22 @@ public  class BaseLink {
     public Double weightedInValue(int nodeValue)
     {
         //I don't understand why you get the value at weight yet. But hopefully I will later
-        return inNode.getValue(nodeValue) * value[WEIGHT];
+        return inNode.getValue(nodeValue) * value.get(Constants.WEIGHT);
     }
 
     public Double weightedOutValue(int nodeValue)
     {
-        return outNode.getValue(nodeValue) * value[WEIGHT];
+        return outNode.getValue(nodeValue) * value.get(Constants.WEIGHT);
     }
 
     public Double weightedInError(int nodeValue)
     {
-        return inNode.getError(nodeValue) * value[WEIGHT];
+        return inNode.getError(nodeValue) * value.get(Constants.WEIGHT);
     }
 
     public Double weightedOutError(int nodeValue)
     {
-        return outNode.getError(nodeValue) * value[WEIGHT];
+        return outNode.getError(nodeValue) * value.get(Constants.WEIGHT);
     }
 
 }

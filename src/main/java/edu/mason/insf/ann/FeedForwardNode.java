@@ -1,5 +1,5 @@
 package edu.mason.insf.ann;
-
+import edu.mason.insf.ann.utils.Constants;
 import edu.mason.insf.ann.BaseNode;
 
 /**
@@ -15,6 +15,10 @@ public class FeedForwardNode extends BaseNode
     {
         super();
     }
+    public FeedForwardNode(int valueSize, int errorSize)
+    {
+        super(valueSize, errorSize);
+    }
 
     public double transferFunction(double value)
     {
@@ -28,8 +32,10 @@ public class FeedForwardNode extends BaseNode
 
         for(int i = 0; i< count; i++)
         {
-            total += inLinks.get(i).weightedInValue();
+            total += inLinks.get(i).weightedInValue(i);
         }
+
+        this.setValue(Constants.MODE, this.transferFunction(total));
     }
 
     public String getName()

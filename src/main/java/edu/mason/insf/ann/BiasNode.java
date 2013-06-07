@@ -9,20 +9,21 @@ package edu.mason.insf.ann;
  */
 public class BiasNode extends InputNode
 {
-    public BiasNode()
+    public BiasNode(Double bias)
     {
-        super();
+        super(1);
+        this.setValue(0,bias);
     }
 
-    final public void setValue(double value)
+    final public void setValue(int id, double value)
     {
-        this.value = value;
+        this.value.add(id,value);
     }
 
 
-    public double getValue()
+    public Double getValue(int id)
     {
-        return this.value;
+        return this.value.get(id);
     }
 
     public String getName()
