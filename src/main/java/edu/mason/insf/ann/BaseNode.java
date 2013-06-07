@@ -115,7 +115,7 @@ public class BaseNode {
 
     public void createLinkTo(BaseNode toNode)
     {
-        BaseLink link = new BaseLink(0);
+        BaseLink link = new BaseLink();
         outLinks.add(link);
         toNode.getInLinks().add(link);
         link.setOutNode(toNode);

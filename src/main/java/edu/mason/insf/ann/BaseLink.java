@@ -22,24 +22,9 @@ public  class BaseLink {
     protected BaseNode outNode;
     protected int valueSize;
 
-    public BaseLink(int size)
+    public BaseLink()
     {
         super();
-        this.valueSize = size;
-
-        if(valueSize <= 0)
-        {
-            value = null;
-        }
-        else
-        {
-            value = new ArrayList<Double>();
-        }
-
-        for(int i = 0; i < valueSize; i++)
-        {
-            this.value.add(i,0.0);
-        }
 
         inNode = null;
         outNode = null;
