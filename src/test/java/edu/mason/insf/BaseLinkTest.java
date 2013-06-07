@@ -11,7 +11,7 @@ import edu.mason.insf.ann.BaseLink;
  */
 public class BaseLinkTest {
 
-    BaseLink link = new BaseLink();
+    BaseLink link = new BaseLink(1);
 
     public void testInNode()
     {
