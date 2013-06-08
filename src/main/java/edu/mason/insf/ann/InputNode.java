@@ -16,12 +16,7 @@ public class InputNode extends BaseNode {
         super();
     }
 
-    public InputNode(int size)
-    {
-        super();
-        this.valueSize = size;
-        this.errorSize = size;
-    }
+
 
     public String getName()
     {

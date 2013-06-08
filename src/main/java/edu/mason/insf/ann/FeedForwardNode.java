@@ -15,10 +15,6 @@ public class FeedForwardNode extends BaseNode
     {
         super();
     }
-    public FeedForwardNode(int valueSize, int errorSize)
-    {
-        super(valueSize, errorSize);
-    }
 
     public double transferFunction(double value)
     {

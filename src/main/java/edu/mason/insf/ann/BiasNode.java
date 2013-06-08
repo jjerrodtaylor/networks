@@ -11,7 +11,7 @@ public class BiasNode extends InputNode
 {
     public BiasNode(Double bias)
     {
-        super(1);
+        super();
         this.setValue(0,bias);
     }
 

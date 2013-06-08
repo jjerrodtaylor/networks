@@ -2,6 +2,7 @@ package edu.mason.insf.ann;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import edu.mason.insf.ann.utils.Constants;
 
 /**
  * Class that represents attributes that are common across all neural network architechtures.
@@ -24,17 +25,13 @@ public class BaseNode {
     *
     * */
     protected ArrayList<Double> value;
-    protected int valueSize;
     protected ArrayList<Double> error;
-    protected int errorSize;
     protected LinkedList<BaseLink> inLinks = new LinkedList<BaseLink>();     //List for input Links
     protected LinkedList<BaseLink> outLinks = new LinkedList<BaseLink>();    //List for output links
 
-    public BaseNode(int valueSize, int errorSize)
+    public BaseNode()
     {
         super();
-        this.valueSize = valueSize;
-        this.errorSize = errorSize;
     }
 
     public Double getValue(int id)
@@ -80,24 +77,17 @@ public class BaseNode {
         this.outLinks = outLinks;
     }
 
-    public void setValueSize(int valueSize)
-    {
-        this.valueSize = valueSize;
-    }
 
     public int getValueSize()
     {
-        return valueSize;
+        return value.size();
     }
 
-    public void setErrorSize(int errorSize)
-    {
-        this.errorSize = errorSize;
-    }
+
 
     public int getErrorSize()
     {
-        return errorSize;
+        return error.size();
     }
 
     /**
