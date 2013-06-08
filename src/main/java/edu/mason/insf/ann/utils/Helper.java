@@ -79,37 +79,38 @@ public class Helper {
         return longString;
     }
 
-    public static List<Pattern<Integer>> turnListToPattern(ArrayList<String> listOfStrings)
+    public static ArrayList<Pattern<Integer>> turnListToPattern(ArrayList<String> listOfStrings)
     {
         //I'm just going to assume that they are all integers for right now.
         StringTokenizer st;
-        LinkedList<Pattern<Integer>> patterns = new LinkedList<Pattern<Integer>>();
+        ArrayList<Pattern<Integer>> patterns = new ArrayList<Pattern<Integer>>();
 
         for(String s:listOfStrings)
         {
             st = new StringTokenizer(s,",");
             int numberOfTokens = st.countTokens();
+            //create a new input pattern
+            Pattern<Integer> patternSet = new Pattern<Integer>();
+
             for(int i = 0; i< numberOfTokens;i++)
             {
-                //create a new input pattern
-                Pattern<Integer> patternSet = new Pattern<Integer>();
 
                 //get the values for the input set
-                if(i <= numberOfTokens-1)
+                if(i <= numberOfTokens-2)
                 {
                     //set the input pattern
-                    patternSet.getInputSet().set(i,Integer.parseInt(st.nextToken()));
+                    patternSet.getInputSet().add(Integer.parseInt(st.nextToken()));
                 }
 
                 //
-                if(i == numberOfTokens)
+                if(i == numberOfTokens-1)
                 {
-                    patternSet.getOutputSet().set(0,Integer.parseInt(st.nextToken()));
+                    patternSet.getOutputSet().add(Integer.parseInt(st.nextToken()));
                 }
-
-                //add the pattern to the list
-                patterns.add(patternSet);
             }
+
+            //add the pattern to the list
+            patterns.add(patternSet);
         }
 
         return patterns;
