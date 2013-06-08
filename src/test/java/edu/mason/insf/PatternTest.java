@@ -25,20 +25,6 @@ public class PatternTest
     }
 
     @Test
-    public void testInputPatternSize()
-    {
-        testPattern.setInputPatternSize(9);
-        assertEquals(9, testPattern.getInputPatternSize());
-    }
-
-    @Test
-    public void testOutputPatternSize()
-    {
-        testPattern.setOutputPatternSize(1);
-        assertEquals(1, testPattern.getOutputPatternSize());
-    }
-
-    @Test
     public void testInputSet()
     {
         LinkedList<Integer> inputSet = new LinkedList<Integer>();
