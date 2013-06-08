@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -198,6 +199,11 @@ public class Pattern<T> {
             longString += listOfStrings.get(i);
         }
         return longString;
+    }
+
+    public List<Pattern<Integer>> turnListToPattern(ArrayList<String> listOfStrings)
+    {
+
     }
 
     /**
