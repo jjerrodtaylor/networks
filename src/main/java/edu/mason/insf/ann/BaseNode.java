@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import edu.mason.insf.ann.utils.Constants;
 
+
 /**
  * Class that represents attributes that are common across all neural network architechtures.
  * The BaseNode class manages the receiving of input values and the distribution of the processed information to other
@@ -24,8 +25,8 @@ public class BaseNode {
      * These operations take an id parameter specifying which value in the set is to be changed or retrieved.
     *
     * */
-    protected ArrayList<Double> value;
-    protected ArrayList<Double> error;
+    protected ArrayList<Double> value = new ArrayList<Double>();
+    protected ArrayList<Double> error = new ArrayList<Double>();
     protected LinkedList<BaseLink> inLinks = new LinkedList<BaseLink>();     //List for input Links
     protected LinkedList<BaseLink> outLinks = new LinkedList<BaseLink>();    //List for output links
 
