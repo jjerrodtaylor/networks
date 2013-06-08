@@ -14,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 public class NodesTest {
 
     BaseNode baseNode = new BaseNode();
-    BiasNode biasNode = new BiasNode(1);
+    BiasNode biasNode = new BiasNode(1.0);
     FeedForwardNode feedForwardNode = new FeedForwardNode();
     InputNode inputNode = new InputNode();
 
@@ -35,21 +35,7 @@ public class NodesTest {
         assertEquals(2.0,inputNode.getValue(0),0);
     }
 
-    @Test
-    public void testValueSize()
-    {
-        baseNode.setValueSize(1);
-        assertEquals(1, baseNode.getValueSize());
 
-        biasNode.setValueSize(1);
-        assertEquals(1, biasNode.getValueSize());
-
-        feedForwardNode.setValueSize(1);
-        assertEquals(1, feedForwardNode.getValueSize());
-
-        inputNode.setValueSize(1);
-        assertEquals(1, inputNode.getValueSize());
-    }
 
     @Test
     public void testError()
@@ -67,27 +53,13 @@ public class NodesTest {
         assertEquals(2.0,inputNode.getError(0),0);
     }
 
-    @Test
-    public void testErrorSize()
-    {
-        baseNode.setErrorSize(1);
-        assertEquals(1,baseNode.getErrorSize(),0);
 
-        biasNode.setErrorSize(1);
-        assertEquals(1,biasNode.getErrorSize(),0);
-
-        feedForwardNode.setErrorSize(1);
-        assertEquals(1,feedForwardNode.getErrorSize(),0);
-
-        inputNode.setErrorSize(1);
-        assertEquals(1,inputNode.getErrorSize(),0);
-    }
 
     @Test
     public void testInLinks()
     {
         LinkedList<BaseLink> inLinks = new LinkedList<BaseLink>();
-        inLinks.add(new BaseLink(1));
+        inLinks.add(new BaseLink());
 
         baseNode.setInLinks(inLinks);
         assertEquals(inLinks.get(0),baseNode.getInLinks().get(0));
@@ -106,7 +78,7 @@ public class NodesTest {
     public void testOutLinks()
     {
         LinkedList<BaseLink> outLinks = new LinkedList<BaseLink>();
-        outLinks.add(new BaseLink(1));
+        outLinks.add(new BaseLink());
 
         baseNode.setOutLinks(outLinks);
         assertEquals(outLinks.get(0),baseNode.getOutLinks().get(0));
