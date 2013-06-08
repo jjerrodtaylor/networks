@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.StringTokenizer;
+
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,8 +20,6 @@ import java.util.List;
 public class Pattern<T> {
 
     public int id;
-    public int inputPatternSize;
-    public int outputPatternSize;
     public LinkedList<T> inputSet;
     public LinkedList<T> outputSet;
 
@@ -48,32 +49,19 @@ public class Pattern<T> {
      * @return
      */
     public int getInputPatternSize() {
-        return inputPatternSize;
+        return inputSet.size();
     }
 
-    /**
-     *
-     * @param inputPatternSize
-     */
-    public void setInputPatternSize(int inputPatternSize) {
-        this.inputPatternSize = inputPatternSize;
-    }
+
 
     /**
      *
      * @return
      */
     public int getOutputPatternSize() {
-        return outputPatternSize;
+        return outputSet.size();
     }
 
-    /**
-     *
-     * @param outputPatternSize
-     */
-    public void setOutputPatternSize(int outputPatternSize) {
-        this.outputPatternSize = outputPatternSize;
-    }
 
     /**
      *
@@ -143,77 +131,6 @@ public class Pattern<T> {
     public void setOutputPatternValue(T value)
     {
         this.getOutputSet().add(value);
-    }
-
-    /**
-     *
-     * @param filepath
-     * @return
-     */
-    public ArrayList<String> readFileToMemory(String filepath)
-    {
-        BufferedReader br = null;
-        String currentLine = null;
-        ArrayList<String> fileContents = new ArrayList<String>();
-
-        try
-        {
-            br = new BufferedReader(new FileReader(filepath));
-            while((currentLine = br.readLine()) != null)
-            {
-                //fileContents.add(br.readLine());
-                fileContents.add(currentLine);
-            }
-
-        }
-        catch(IOException e)
-        {
-            e.printStackTrace();
-        }
-        finally
-        {
-            try
-            {
-                br.close();
-            }
-            catch(IOException e)
-            {
-                e.printStackTrace();
-            }
-        }
-
-        return fileContents;
-    }
-
-    /**
-     *
-     * @param listOfStrings
-     * @return
-     */
-    public String turnListToString(ArrayList<String> listOfStrings)
-    {
-        String longString = "";
-
-        for(int i =0; i < listOfStrings.size()-1; i++)
-        {
-            longString += listOfStrings.get(i);
-        }
-        return longString;
-    }
-
-    public List<Pattern<Integer>> turnListToPattern(ArrayList<String> listOfStrings)
-    {
-
-    }
-
-    /**
-     *
-     * @param s
-     * @return
-     */
-    public String[] splitString(String s)
-    {
-        return s.split("(?!^)");
     }
 
 }
