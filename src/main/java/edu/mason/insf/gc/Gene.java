@@ -26,13 +26,5 @@ public class Gene {
         }
     }
 
-    public void mutate()
-    {
 
-    }
-
-    public Gene crossover()
-    {
-
-    }
 }
