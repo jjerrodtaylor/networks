@@ -20,12 +20,14 @@ import java.util.StringTokenizer;
 public class Pattern<T> {
 
     public int id;
-    public LinkedList<T> inputSet = new LinkedList<T>();
-    public LinkedList<T> outputSet = new LinkedList<T>();
+    public LinkedList<T> inputSet;
+    public LinkedList<T> outputSet;
 
     public Pattern()
     {
         super();
+        inputSet = new LinkedList<T>();
+        outputSet = new LinkedList<T>();
     }
 
     /**
