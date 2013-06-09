@@ -9,7 +9,7 @@ import edu.mason.insf.ann.BaseNode;
  * Time: 10:23 AM
  * To change this template use File | Settings | File Templates.
  */
-public class FeedForwardNode extends BaseNode
+public abstract class FeedForwardNode extends BaseNode
 {
     public FeedForwardNode()
     {
