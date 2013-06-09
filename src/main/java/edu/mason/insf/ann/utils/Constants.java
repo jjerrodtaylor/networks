@@ -5,9 +5,9 @@ package edu.mason.insf.ann.utils;
  */
 public class Constants {
 
-    public static int NODE_VALUE = 0;
-    public static int LEARNING_RATE = 1;
-    public static int NODE_ERROR = 0;
     public static int WEIGHT = 0;
-    public static int MODE = 2;
+    public static int LEARNING_RATE = 1;
+    public static int NODE_ERROR = 2;
+    public static int NODE_VALUE = 3;
+    public static int MODE = 4;
 }
