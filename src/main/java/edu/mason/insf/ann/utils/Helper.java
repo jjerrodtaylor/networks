@@ -18,17 +18,18 @@ import edu.mason.insf.ann.utils.Pattern;
  */
 public class Helper {
 
+    public Helper()
+    {
+        super();
+    }
+
     public static double generateRandomDouble(int min, int max)
     {
         return min + (double)(Math.random() * ((max - min) + 1));
     }
 
-    /**
-     *
-     * @param filepath
-     * @return
-     */
-    public static ArrayList<String> readFileToMemory(String filepath)
+
+    public ArrayList<String> readFileToMemory(String filepath)
     {
         BufferedReader br = null;
         String currentLine = null;
@@ -63,12 +64,8 @@ public class Helper {
         return fileContents;
     }
 
-    /**
-     *
-     * @param listOfStrings
-     * @return
-     */
-    public static String turnListToString(ArrayList<String> listOfStrings)
+
+    public String turnListToString(ArrayList<String> listOfStrings)
     {
         String longString = "";
 
@@ -79,7 +76,7 @@ public class Helper {
         return longString;
     }
 
-    public static ArrayList<Pattern<Integer>> turnListToPattern(ArrayList<String> listOfStrings)
+    public ArrayList<Pattern<Integer>> turnListToPattern(ArrayList<String> listOfStrings)
     {
         //I'm just going to assume that they are all integers for right now.
         StringTokenizer st;
@@ -121,7 +118,7 @@ public class Helper {
      * @param s
      * @return
      */
-    public static String[] splitString(String s)
+    public String[] splitString(String s)
     {
         return s.split("(?!^)");
     }
