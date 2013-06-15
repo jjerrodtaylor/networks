@@ -6,6 +6,7 @@ import edu.mason.insf.ann.BiasNode;
 import edu.mason.insf.ann.InputNode;
 import edu.mason.insf.ann.adaline.AdalineLink;
 import edu.mason.insf.ann.adaline.AdalineNode;
+import edu.mason.insf.ann.utils.Constants;
 import edu.mason.insf.ann.utils.Helper;
 import edu.mason.insf.ann.utils.Pattern;
 import org.junit.Test;
@@ -28,10 +29,10 @@ public class TestAdaline {
         Helper helper = new Helper();
         ArrayList<String> testData = helper.readFileToMemory("/Users/jamaaltaylor/Documents/workspace/networks/src/test/resources/breastcancer.csv");
         ArrayList<Pattern<Integer>> inputPatterns = helper.turnListToPattern(testData);
+        AdalineLink aLink = new AdalineLink();
 
-
-        BaseNode nodeArray[] = new BaseNode[13];
-        BaseLink linkArray[] = new BaseLink[12];
+        BaseNode nodeArray[] = new BaseNode[14];
+        BaseLink linkArray[] = new BaseLink[13];
 
         nodeArray[0] = new InputNode();
         nodeArray[1] = new InputNode();
@@ -86,10 +87,17 @@ public class TestAdaline {
         while(good<250)
         {
             good=0;
+
+            //set the values of all of the input nodes.
             for(int i=0; i<inputPatterns.size(); i++)
             {
-
+                for(int j=0; j<nodeArray.length-2;j++)
+                {
+                    nodeArray[j].setValue(Constants.NODE_VALUE,inputPatterns.get(i).getInputPatternValue(j));
+                }
             }
+
+            nodeArray[nodeArray.length-1].
         }
 
     }
