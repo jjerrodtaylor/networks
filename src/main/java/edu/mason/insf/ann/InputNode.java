@@ -16,8 +16,6 @@ public class InputNode extends BaseNode {
         super();
     }
 
-
-
     public String getName()
     {
         return "InputNode";
