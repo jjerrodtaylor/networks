@@ -1,6 +1,7 @@
 package edu.mason.insf.ann;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import edu.mason.insf.ann.utils.Constants;
 
@@ -11,7 +12,7 @@ import edu.mason.insf.ann.utils.Constants;
  * nodes in the network. THe BaseNode class does NOT define how the node objects process information; this task is left
  * to the BaseNode progeny.
  */
-public class BaseNode {
+public class BaseNode<T> {
 
     private int ticket;
 
@@ -25,8 +26,8 @@ public class BaseNode {
      * These operations take an id parameter specifying which value in the set is to be changed or retrieved.
     *
     * */
-    protected ArrayList<Double> value = new ArrayList<Double>();
-    protected ArrayList<Double> error = new ArrayList<Double>();
+    protected HashMap<Integer, T> value = new HashMap<Integer, T>();
+    protected HashMap<Integer, T> error = new HashMap<Integer, T>();
     protected LinkedList<BaseLink> inLinks = new LinkedList<BaseLink>();     //List for input Links
     protected LinkedList<BaseLink> outLinks = new LinkedList<BaseLink>();    //List for output links
 
@@ -35,24 +36,24 @@ public class BaseNode {
         super();
     }
 
-    public Double getValue(int id)
+    public T getValue(int id)
     {
         return value.get(id);
     }
 
-    public void setValue(int id, Double newValue)
+    public void setValue(int id, T newValue)
     {
-        this.value.add(id,newValue);
+        this.value.put(id,newValue);
     }
 
-    public double getError(int id)
+    public T getError(int id)
     {
         return this.error.get(id);
     }
 
-    public void setError(int id, Double newError)
+    public void setError(int id, T newError)
     {
-        this.error.add(id, newError);
+        this.error.put(id, newError);
     }
 
     public int getId()

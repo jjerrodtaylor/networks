@@ -17,7 +17,7 @@ public class BiasNode extends InputNode
 
     final public void setValue(int id, double value)
     {
-        this.value.add(id,value);
+        this.value.put(id,value);
     }
 
 

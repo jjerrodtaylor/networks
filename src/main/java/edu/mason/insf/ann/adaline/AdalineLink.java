@@ -17,6 +17,6 @@ public class AdalineLink extends BaseLink {
     {
         super();
         Double value = Helper.generateRandomDouble(-1,1);
-        this.value.set(Constants.WEIGHT,value);
+        this.value.put(Constants.WEIGHT,value);
     }
 }

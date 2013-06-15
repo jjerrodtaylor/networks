@@ -3,6 +3,7 @@ package edu.mason.insf.ann;
 import edu.mason.insf.ann.utils.Constants;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * User: jamaaltaylor
@@ -13,11 +14,10 @@ import java.util.ArrayList;
  */
 public  class BaseLink {
 
-    private int ticket=0;
 
     public static final Integer WEIGHT = 0;
     protected int id;
-    protected ArrayList<Double> value;
+    protected HashMap<Integer, Double> value;
     protected BaseNode inNode;
     protected BaseNode outNode;
     protected int valueSize;
@@ -28,8 +28,7 @@ public  class BaseLink {
 
         inNode = null;
         outNode = null;
-
-        id=++ticket;
+        value = new HashMap<Integer, Double>();
     }
 
     public int getValueSize() {
@@ -47,7 +46,7 @@ public  class BaseLink {
 
     public void setValue(int id, double newValue)
     {
-        this.value.add(id, newValue);
+        this.value.put(id,newValue);
     }
 
     //the original method signature. I'm not sure what you need the id for
@@ -57,11 +56,21 @@ public  class BaseLink {
         this.inNode = node;
     }
 
+    public BaseNode getInNode()
+    {
+        return this.inNode;
+    }
+
     //the original method signature. I'm not sure what you need the id for
     //public void setOutNode(BaseNode node, int id)
     public void setOutNode(BaseNode node)
     {
         this.outNode = node;
+    }
+
+    public BaseNode getOutNode()
+    {
+        return this.outNode;
     }
 
     public void updateWeight(double newVal)
