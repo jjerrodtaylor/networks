@@ -11,4 +11,6 @@ public interface IFeedForward {
 
     public double transferFunction(double value);
 
+    public void run();
+
 }
