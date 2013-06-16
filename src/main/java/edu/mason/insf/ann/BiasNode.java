@@ -7,21 +7,32 @@ package edu.mason.insf.ann;
  * Time: 8:22 AM
  * To change this template use File | Settings | File Templates.
  */
-public class BiasNode extends InputNode
+public class BiasNode<T> extends InputNode<T>
 {
+    private Double bias;
+
     public BiasNode(Double bias)
     {
         super();
-        this.setValue(0,bias);
+        this.bias = bias;
     }
 
-    final public void setValue(int id, double value)
+    public void setValue(int id, T value)
     {
         this.value.put(id,value);
     }
 
+    public void setBias(Double bias)
+    {
+        this.bias = bias;
+    }
 
-    public Double getValue(int id)
+    public Double getBias()
+    {
+        return this.bias;
+    }
+
+    public T getValue(int id)
     {
         return this.value.get(id);
     }

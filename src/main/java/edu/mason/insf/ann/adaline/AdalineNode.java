@@ -8,10 +8,10 @@ import edu.mason.insf.ann.utils.Constants;
 /**
  * The class that implements the adeline node model
  */
-public class AdalineNode extends BaseNode implements IFeedForward
+public class AdalineNode<T> extends BaseNode<T> implements IFeedForward
 {
 
-    public AdalineNode(double learningRate)
+    public AdalineNode(T learningRate)
     {
         value.put(Constants.LEARNING_RATE,learningRate);
     }
