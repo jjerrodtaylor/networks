@@ -13,10 +13,10 @@ import static org.junit.Assert.assertEquals;
  */
 public class NodesTest {
 
-    BaseNode baseNode = new BaseNode();
+    BaseNode<Double> baseNode = new BaseNode<Double>();
     BiasNode biasNode = new BiasNode(1.0);
     //FeedForwardNode feedForwardNode = new FeedForwardNode();
-    InputNode inputNode = new InputNode();
+    InputNode<Double> inputNode = new InputNode<Double>();
 
     @Test
     public void testValue()
@@ -32,7 +32,7 @@ public class NodesTest {
 //        assertEquals(2.0,feedForwardNode.getValue(0),0);
 
         inputNode.setValue(0, 2.0);
-        assertEquals(2.0,inputNode.getValue(0),0);
+        assertEquals(2.0,inputNode.getValue(0),0.0);
     }
 
 
