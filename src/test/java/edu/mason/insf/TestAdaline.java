@@ -28,10 +28,10 @@ public class TestAdaline {
     {
         Helper helper = new Helper();
         ArrayList<String> testData = helper.readFileToMemory("/Users/jamaaltaylor/Documents/workspace/networks/src/test/resources/breastcancer.csv");
-        ArrayList<Pattern<Integer>> inputPatterns = helper.turnListToPattern(testData);
+        ArrayList<Pattern<Double>> inputPatterns = helper.turnListToPattern(testData);
         AdalineLink aLink = new AdalineLink();
-
-        BaseNode nodeArray[] = new BaseNode[14];
+        AdalineNode aNode = new AdalineNode(0.45);
+        InputNode nodeArray[] = new InputNode[14];
         BaseLink linkArray[] = new BaseLink[13];
 
         nodeArray[0] = new InputNode();
@@ -47,7 +47,6 @@ public class TestAdaline {
         nodeArray[10] = new InputNode();
         nodeArray[11] = new InputNode();
         nodeArray[12] = new BiasNode(1.0);
-        nodeArray[13] = new AdalineNode(0.45);
 
         linkArray[0] = new AdalineLink();
         linkArray[1] = new AdalineLink();
@@ -64,41 +63,48 @@ public class TestAdaline {
         linkArray[12] = new AdalineLink();
 
 
-        nodeArray[0].createLinkTo(nodeArray[3], linkArray[0]);
-        nodeArray[1].createLinkTo(nodeArray[3], linkArray[1]);
-        nodeArray[2].createLinkTo(nodeArray[3], linkArray[2]);
+        nodeArray[0].createLinkTo(aNode, linkArray[0]);
+        nodeArray[1].createLinkTo(aNode, linkArray[1]);
+        nodeArray[2].createLinkTo(aNode, linkArray[2]);
 
-        nodeArray[3].createLinkTo(nodeArray[3], linkArray[3]);
-        nodeArray[4].createLinkTo(nodeArray[3], linkArray[4]);
-        nodeArray[5].createLinkTo(nodeArray[3], linkArray[5]);
+        nodeArray[3].createLinkTo(aNode, linkArray[3]);
+        nodeArray[4].createLinkTo(aNode, linkArray[4]);
+        nodeArray[5].createLinkTo(aNode, linkArray[5]);
 
-        nodeArray[6].createLinkTo(nodeArray[3], linkArray[6]);
-        nodeArray[7].createLinkTo(nodeArray[3], linkArray[7]);
-        nodeArray[8].createLinkTo(nodeArray[3], linkArray[8]);
+        nodeArray[6].createLinkTo(aNode, linkArray[6]);
+        nodeArray[7].createLinkTo(aNode, linkArray[7]);
+        nodeArray[8].createLinkTo(aNode, linkArray[8]);
 
-        nodeArray[9].createLinkTo(nodeArray[3], linkArray[9]);
-        nodeArray[10].createLinkTo(nodeArray[3], linkArray[10]);
-        nodeArray[11].createLinkTo(nodeArray[3], linkArray[11]);
-        nodeArray[12].createLinkTo(nodeArray[3], linkArray[12]);
+        nodeArray[9].createLinkTo(aNode, linkArray[9]);
+        nodeArray[10].createLinkTo(aNode, linkArray[10]);
+        nodeArray[11].createLinkTo(aNode, linkArray[11]);
+        nodeArray[12].createLinkTo(aNode, linkArray[12]);
 
-        int interation = 0;
-        int good = 0;
+        int good = testData.size();
 
-        while(good<250)
+        //go through each test pattern
+        for(int i=0; i<inputPatterns.size(); i++)
         {
-            good=0;
-
-            //set the values of all of the input nodes.
-            for(int i=0; i<inputPatterns.size(); i++)
+            //set the values of all of the input nodes
+            for(int j=0; j<inputPatterns.get(i).getInputSet().size();j++)
             {
-                for(int j=0; j<nodeArray.length-2;j++)
+                nodeArray[j].setValue(Constants.NODE_VALUE,inputPatterns.get(i).getInputPatternValue(j));
+
+                if(j == inputPatterns.get(i).getInputSet().size()-1)
                 {
-                    nodeArray[j].setValue(Constants.NODE_VALUE,inputPatterns.get(i).getInputPatternValue(j));
+                    //run the adaline node
+                    aNode.run();
+
+                    if(inputPatterns.get(i).getOutputSet().get(j) != aNode.getValue(Constants.NODE_VALUE))
+                    {
+                        aNode.learn();
+                    }
+                    else
+                    {
+                        good++;
+                    }
                 }
             }
-
-            nodeArray[nodeArray.length-1].
         }
-
     }
 }
