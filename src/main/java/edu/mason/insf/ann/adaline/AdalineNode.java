@@ -5,20 +5,23 @@ import edu.mason.insf.ann.BaseNode;
 import edu.mason.insf.ann.IFeedForward;
 import edu.mason.insf.ann.utils.Constants;
 
+import java.util.LinkedList;
+
 /**
  * The class that implements the adeline node model
  */
-public class AdalineNode<T> extends BaseNode<T> implements IFeedForward
+public class AdalineNode extends BaseNode implements IFeedForward
 {
 
-    public AdalineNode(T learningRate)
+    public AdalineNode(Double learningRate)
     {
         value.put(Constants.LEARNING_RATE,learningRate);
     }
 
     public void learn()
     {
-        double nodeError = value.get(Constants.NODE_VALUE)* -2.0;
+        Double nodeValue = (Double)value.get(Constants.NODE_VALUE);
+        double nodeError = nodeValue * -2.0;
         error.put(Constants.NODE_ERROR, nodeError);
         BaseLink link;
         int count = inLinks.size();
@@ -26,7 +29,7 @@ public class AdalineNode<T> extends BaseNode<T> implements IFeedForward
 
         for(int i = 0; i < count; i++)
         {
-            delta = value.get(Constants.LEARNING_RATE) * inLinks.get(i).getInValue(Constants.WEIGHT);
+            delta = (Double)value.get(Constants.LEARNING_RATE) * inLinks.get(i).getInValue(Constants.WEIGHT);
             inLinks.get(i).updateWeight(delta);
         }
     }
@@ -38,7 +41,9 @@ public class AdalineNode<T> extends BaseNode<T> implements IFeedForward
 
         for(int i = 0; i< count; i++)
         {
-            total += inLinks.get(i).weightedInValue(i);
+            BaseLink specificInLink = inLinks.get(i);
+            Double weightedValue = specificInLink.weightedInValue(Constants.NODE_VALUE);
+            total += weightedValue;
         }
 
         this.setValue(Constants.NODE_VALUE, this.transferFunction(total));

@@ -13,10 +13,10 @@ import static org.junit.Assert.assertEquals;
  */
 public class NodesTest {
 
-    BaseNode<Double> baseNode = new BaseNode<Double>();
+    BaseNode baseNode = new BaseNode();
     BiasNode biasNode = new BiasNode(1.0);
     //FeedForwardNode feedForwardNode = new FeedForwardNode();
-    InputNode<Double> inputNode = new InputNode<Double>();
+    InputNode inputNode = new InputNode();
 
     @Test
     public void testValue()

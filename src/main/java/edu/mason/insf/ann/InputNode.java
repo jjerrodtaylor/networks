@@ -9,7 +9,7 @@ import edu.mason.insf.ann.BaseNode;
  * Time: 8:18 AM
  * To change this template use File | Settings | File Templates.
  */
-public class InputNode<T> extends BaseNode<T> {
+public class InputNode extends BaseNode {
 
     public InputNode()
     {

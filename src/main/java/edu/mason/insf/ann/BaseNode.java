@@ -12,7 +12,7 @@ import edu.mason.insf.ann.utils.Constants;
  * nodes in the network. THe BaseNode class does NOT define how the node objects process information; this task is left
  * to the BaseNode progeny.
  */
-public class BaseNode<T> {
+public class BaseNode {
 
     private int ticket;
 
@@ -21,13 +21,16 @@ public class BaseNode<T> {
     /*
     * The network node values define the network's state and result from the nodes processing input values. To
     * facilitate the implementation of various neural-network architechtures, a set of values is used for each instead
-     * of a single value. If only one value is needed in the node object, the set will simply have a size of one. The
-     * size of the value set is specified at the object's instantiation so no memory is wasted on unneeded array slots.
-     * These operations take an id parameter specifying which value in the set is to be changed or retrieved.
-    *
+    * of a single value. If only one value is needed in the node object, the set will simply have a size of one. The
+    * size of the value set is specified at the object's instantiation so no memory is wasted on unneeded array slots.
+    * These operations take an id parameter specifying which value in the set is to be changed or retrieved.
     * */
-    protected HashMap<Integer, T> value = new HashMap<Integer, T>();
-    protected HashMap<Integer, T> error = new HashMap<Integer, T>();
+
+    /*
+    * I want to make this library generic from the beginning. That means that the value Hashmap
+    * */
+    protected HashMap<Integer, Double> value = new HashMap<Integer, Double>();
+    protected HashMap<Integer, Double> error = new HashMap<Integer, Double>();
     protected LinkedList<BaseLink> inLinks = new LinkedList<BaseLink>();     //List for input Links
     protected LinkedList<BaseLink> outLinks = new LinkedList<BaseLink>();    //List for output links
 
@@ -36,22 +39,23 @@ public class BaseNode<T> {
         super();
     }
 
-    public T getValue(int id)
+    //for now I will only work with double even though I want to make things generic eventually
+    public Double getValue(int id)
     {
         return value.get(id);
     }
 
-    public void setValue(int id, T newValue)
+    public void setValue(int id, Double newValue)
     {
         this.value.put(id,newValue);
     }
 
-    public T getError(int id)
+    public Double getError(int id)
     {
         return this.error.get(id);
     }
 
-    public void setError(int id, T newError)
+    public void setError(int id, Double newError)
     {
         this.error.put(id, newError);
     }
@@ -84,8 +88,6 @@ public class BaseNode<T> {
     {
         return value.size();
     }
-
-
 
     public int getErrorSize()
     {
