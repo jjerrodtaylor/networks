@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.StringTokenizer;
+import edu.mason.insf.ann.InputNode;
 import edu.mason.insf.ann.utils.Pattern;
 
 /**
@@ -27,7 +28,6 @@ public class Helper {
     {
         return min + (double)(Math.random() * ((max - min) + 1));
     }
-
 
     public ArrayList<String> readFileToMemory(String filepath)
     {
@@ -64,7 +64,6 @@ public class Helper {
         return fileContents;
     }
 
-
     public String turnListToString(ArrayList<String> listOfStrings)
     {
         String longString = "";
@@ -76,18 +75,18 @@ public class Helper {
         return longString;
     }
 
-    public ArrayList<Pattern<Integer>> turnListToPattern(ArrayList<String> listOfStrings)
+    public ArrayList<Pattern<Double>> turnListToPattern(ArrayList<String> listOfStrings)
     {
         //I'm just going to assume that they are all integers for right now.
         StringTokenizer st;
-        ArrayList<Pattern<Integer>> patterns = new ArrayList<Pattern<Integer>>();
+        ArrayList<Pattern<Double>> patterns = new ArrayList<Pattern<Double>>();
 
         for(String s:listOfStrings)
         {
             st = new StringTokenizer(s,",");
             int numberOfTokens = st.countTokens();
             //create a new input pattern
-            Pattern<Integer> patternSet = new Pattern<Integer>();
+            Pattern<Double> patternSet = new Pattern<Double>();
 
             for(int i = 0; i< numberOfTokens;i++)
             {
@@ -95,14 +94,15 @@ public class Helper {
                 //get the values for the input set
                 if(i <= numberOfTokens-2)
                 {
+
                     //set the input pattern
-                    patternSet.getInputSet().add(Integer.parseInt(st.nextToken()));
+                    patternSet.getInputSet().add(Double.parseDouble(st.nextToken()));
                 }
 
                 //
                 if(i == numberOfTokens-1)
                 {
-                    patternSet.getOutputSet().add(Integer.parseInt(st.nextToken()));
+                    patternSet.getOutputSet().add(Double.parseDouble(st.nextToken()));
                 }
             }
 
@@ -113,14 +113,10 @@ public class Helper {
         return patterns;
     }
 
-    /**
-     *
-     * @param s
-     * @return
-     */
     public String[] splitString(String s)
     {
         return s.split("(?!^)");
     }
+
 
 }

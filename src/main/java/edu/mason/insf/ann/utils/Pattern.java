@@ -17,7 +17,7 @@ import java.util.StringTokenizer;
  * Time: 7:29 PM
  * To change this template use File | Settings | File Templates.
  */
-public class Pattern<T> {
+public class Pattern<T extends Comparable<T>> {
 
     public int id;
     public LinkedList<T> inputSet;
