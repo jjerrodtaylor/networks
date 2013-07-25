@@ -37,6 +37,7 @@ public class BaseNode {
     public BaseNode()
     {
         super();
+        //initiate
     }
 
     //for now I will only work with double even though I want to make things generic eventually
