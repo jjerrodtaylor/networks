@@ -101,7 +101,9 @@ public  class BaseLink {
     public Double weightedInValue(int nodeValue)
     {
         //I don't understand why you get the value at weight yet. But hopefully I will later
-        return inNode.getValue(nodeValue) * value.get(Constants.WEIGHT);
+        Double inNodeValue = inNode.getValue(nodeValue);
+        Double weightedValue = value.get(Constants.WEIGHT);
+        return inNodeValue * weightedValue;
     }
 
     public Double weightedOutValue(int nodeValue)
