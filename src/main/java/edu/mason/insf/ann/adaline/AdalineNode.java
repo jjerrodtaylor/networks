@@ -4,6 +4,7 @@ import edu.mason.insf.ann.BaseLink;
 import edu.mason.insf.ann.BaseNode;
 import edu.mason.insf.ann.IFeedForward;
 import edu.mason.insf.ann.utils.Constants;
+import edu.mason.insf.ann.utils.Helper;
 
 import java.util.LinkedList;
 
@@ -16,6 +17,9 @@ public class AdalineNode extends BaseNode implements IFeedForward
     public AdalineNode(Double learningRate)
     {
         value.put(Constants.LEARNING_RATE,learningRate);
+
+        //initialize the node with a value between -1 and 1.
+        value.put(Constants.WEIGHT, Helper.generateRandomDouble(-1,1));
     }
 
     public void learn()
@@ -37,10 +41,13 @@ public class AdalineNode extends BaseNode implements IFeedForward
     public void run()
     {
         double total = 0;
+
+        //find out how many input links there are
         int count = inLinks.size();
 
-        for(int i = 0; i< count; i++)
+        for(int i = 0; i< count-1; i++)
         {
+            //grab a specific link in sequence
             BaseLink specificInLink = inLinks.get(i);
             Double weightedValue = specificInLink.weightedInValue(Constants.NODE_VALUE);
             total += weightedValue;
