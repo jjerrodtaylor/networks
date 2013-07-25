@@ -31,8 +31,8 @@ public class TestAdaline {
         ArrayList<Pattern<Double>> inputPatterns = helper.turnListToPattern(testData);
         AdalineLink aLink = new AdalineLink();
         AdalineNode aNode = new AdalineNode(0.45);
-        InputNode nodeArray[] = new InputNode[14];
-        BaseLink linkArray[] = new BaseLink[13];
+        InputNode nodeArray[] = new InputNode[13];
+        BaseLink linkArray[] = new BaseLink[12];
 
         nodeArray[0] = new InputNode();
         nodeArray[1] = new InputNode();
@@ -44,9 +44,7 @@ public class TestAdaline {
         nodeArray[7] = new InputNode();
         nodeArray[8] = new InputNode();
         nodeArray[9] = new InputNode();
-        nodeArray[10] = new InputNode();
-        nodeArray[11] = new InputNode();
-        nodeArray[12] = new BiasNode(1.0);
+        nodeArray[10] = new BiasNode(1.0);
 
         linkArray[0] = new AdalineLink();
         linkArray[1] = new AdalineLink();
@@ -59,26 +57,19 @@ public class TestAdaline {
         linkArray[8] = new AdalineLink();
         linkArray[9] = new AdalineLink();
         linkArray[10] = new AdalineLink();
-        linkArray[11] = new AdalineLink();
-        linkArray[12] = new AdalineLink();
 
 
         nodeArray[0].createLinkTo(aNode, linkArray[0]);
         nodeArray[1].createLinkTo(aNode, linkArray[1]);
         nodeArray[2].createLinkTo(aNode, linkArray[2]);
-
         nodeArray[3].createLinkTo(aNode, linkArray[3]);
         nodeArray[4].createLinkTo(aNode, linkArray[4]);
         nodeArray[5].createLinkTo(aNode, linkArray[5]);
-
         nodeArray[6].createLinkTo(aNode, linkArray[6]);
         nodeArray[7].createLinkTo(aNode, linkArray[7]);
         nodeArray[8].createLinkTo(aNode, linkArray[8]);
-
         nodeArray[9].createLinkTo(aNode, linkArray[9]);
         nodeArray[10].createLinkTo(aNode, linkArray[10]);
-        nodeArray[11].createLinkTo(aNode, linkArray[11]);
-        nodeArray[12].createLinkTo(aNode, linkArray[12]);
 
         int good = testData.size();
 
@@ -86,11 +77,24 @@ public class TestAdaline {
         for(int i=0; i<inputPatterns.size(); i++)
         {
             //set the values of all of the input nodes
-            for(int j=0; j<inputPatterns.get(i).getInputSet().size();j++)
+            int totalNumberOfNodes = inputPatterns.get(i).getInputSet().size() + inputPatterns.get(i).getOutputSet().size();
+            for(int j=0; j<totalNumberOfNodes;j++)
             {
-                nodeArray[j].setValue(Constants.NODE_VALUE,inputPatterns.get(i).getInputPatternValue(j));
+                //subtract 1 to account for 0 indexing
+                int inputPatternSize = inputPatterns.get(i).getInputSet().size();
+                if(j < inputPatternSize)
+                {
+                    Double inputValue = inputPatterns.get(i).getInputPatternValue(j);
+                    nodeArray[j].setValue(Constants.NODE_VALUE,inputValue);
+                }
+                else
+                {
+                    //the output pattern will always contain only one value
+                    Double outPutValue = inputPatterns.get(i).getOutputPatternValue(0);
+                    nodeArray[j].setValue(Constants.WEIGHT,outPutValue);
+                }
 
-                if(j == inputPatterns.get(i).getInputSet().size()-1)
+                if(j == inputPatterns.get(i).getInputSet().size()-1 + inputPatterns.get(i).getOutputSet().size())
                 {
                     //run the adaline node
                     aNode.run();
