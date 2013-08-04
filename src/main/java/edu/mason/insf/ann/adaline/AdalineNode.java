@@ -14,6 +14,11 @@ import java.util.LinkedList;
 public class AdalineNode extends BaseNode implements IFeedForward
 {
 
+    public AdalineNode()
+    {
+        super();
+    }
+
     public AdalineNode(Double learningRate)
     {
         value.put(Constants.LEARNING_RATE,learningRate);
