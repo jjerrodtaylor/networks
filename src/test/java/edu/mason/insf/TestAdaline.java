@@ -31,24 +31,22 @@ public class TestAdaline {
     @Test
     public void testInitializeNodes()
     {
+        //test initializing the nodes
         aNetwork.initializeNodes(3);
         assertNotNull(aNetwork.getNodeList().get(0));
         assertNotNull(aNetwork.getNodeList().get(1));
         assertNotNull(aNetwork.getNodeList().get(2));
-    }
 
-    @Test
-    public void testInitializeLinks()
-    {
+        //test initializing the links
         aNetwork.initializeLinks(3);
         assertNotNull(aNetwork.getLinkList().get(0));
         assertNotNull(aNetwork.getLinkList().get(1));
         assertNotNull(aNetwork.getLinkList().get(2));
-    }
 
-    @Test
-    public void testConnectNodesAndLinks()
-    {
-
+        //test connecting everything together
+        aNetwork.connectNodesAndLinks();
+        assertEquals(aNetwork.getAdalineNode().getInLinks().get(0).getInNode(), aNetwork.getLinkList().get(0).getInNode());
+        assertEquals(aNetwork.getAdalineNode().getInLinks().get(1).getInNode(), aNetwork.getLinkList().get(1).getInNode());
+        assertEquals(aNetwork.getAdalineNode().getInLinks().get(2).getInNode(), aNetwork.getLinkList().get(2).getInNode());
     }
 }
