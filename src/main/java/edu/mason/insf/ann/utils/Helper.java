@@ -43,7 +43,6 @@ public class Helper {
                 //fileContents.add(br.readLine());
                 fileContents.add(currentLine);
             }
-
         }
         catch(IOException e)
         {
@@ -90,16 +89,13 @@ public class Helper {
 
             for(int i = 0; i< numberOfTokens;i++)
             {
-
                 //get the values for the input set
                 if(i <= numberOfTokens-2)
                 {
-
                     //set the input pattern
                     patternSet.getInputSet().add(Double.parseDouble(st.nextToken()));
                 }
 
-                //
                 if(i == numberOfTokens-1)
                 {
                     patternSet.getOutputSet().add(Double.parseDouble(st.nextToken()));
@@ -117,6 +113,4 @@ public class Helper {
     {
         return s.split("(?!^)");
     }
-
-
 }
