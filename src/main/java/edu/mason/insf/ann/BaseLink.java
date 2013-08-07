@@ -1,6 +1,7 @@
 package edu.mason.insf.ann;
 
 import edu.mason.insf.ann.utils.Constants;
+import edu.mason.insf.ann.utils.Helper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +16,7 @@ import java.util.HashMap;
 public  class BaseLink {
 
 
-    public static final Integer WEIGHT = 0;
+    protected Double weight;
     protected int id;
     protected HashMap<Integer, Double> value;
     protected BaseNode inNode;
@@ -28,7 +29,10 @@ public  class BaseLink {
 
         inNode = null;
         outNode = null;
+        //use randomly generated double as initial weight
+        weight = Helper.generateRandomDouble(-1,1);
         value = new HashMap<Integer, Double>();
+        value.put(Constants.WEIGHT,weight);
     }
 
     public int getValueSize() {

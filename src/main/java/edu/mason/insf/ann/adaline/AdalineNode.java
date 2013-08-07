@@ -29,7 +29,7 @@ public class AdalineNode extends BaseNode implements IFeedForward
 
     public void learn()
     {
-        Double nodeValue = (Double)value.get(Constants.NODE_VALUE);
+        Double nodeValue = value.get(Constants.NODE_VALUE);
         double nodeError = nodeValue * -2.0;
         error.put(Constants.NODE_ERROR, nodeError);
         BaseLink link;
@@ -38,7 +38,10 @@ public class AdalineNode extends BaseNode implements IFeedForward
 
         for(int i = 0; i < count; i++)
         {
-            delta = (Double)value.get(Constants.LEARNING_RATE) * inLinks.get(i).getInValue(Constants.WEIGHT);
+            link = inLinks.get(i);
+            Double learningRate = value.get(Constants.LEARNING_RATE);
+            Double value = inLinks.get(i).getInValue(Constants.NODE_VALUE);
+            delta = learningRate * value * nodeError;
             inLinks.get(i).updateWeight(delta);
         }
     }
