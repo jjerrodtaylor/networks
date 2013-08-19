@@ -7,16 +7,12 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.StringTokenizer;
+
+import edu.mason.insf.ann.BaseLink;
 import edu.mason.insf.ann.InputNode;
+import edu.mason.insf.ann.adaline.AdalineNode;
 import edu.mason.insf.ann.utils.Pattern;
 
-/**
- * Created with IntelliJ IDEA.
- * User: jamaaltaylor
- * Date: 6/8/13
- * Time: 12:25 AM
- * To change this template use File | Settings | File Templates.
- */
 public class Helper {
 
     public Helper()
@@ -112,5 +108,43 @@ public class Helper {
     public String[] splitString(String s)
     {
         return s.split("(?!^)");
+    }
+
+    public ArrayList<Pattern<Double>> partitionDataSet(Double percentToPartition, ArrayList<Pattern<Double>> dataSet)
+    {
+        ArrayList<Pattern<Double>> newList = new ArrayList<Pattern<Double>>();
+        int lengthOfDataSet = dataSet.size();
+        double partToPartition = lengthOfDataSet * percentToPartition;
+
+        for(int i = 0; i<(int)partToPartition;i++)
+        {
+            newList.add(dataSet.get(i));
+        }
+
+        return newList;
+    }
+
+    public void printNetworkValues(ArrayList<InputNode> nodeList,
+                                   ArrayList<BaseLink> linkList,
+                                   AdalineNode aNode,
+                                   Integer iterationThroughData,
+                                   Integer positionInData)
+    {
+        System.out.println("Weights for input notes");
+
+        //for each inputnode in the network
+        for(int i=0; i<nodeList.size(); i++)
+        {
+            String nodeValue = String.valueOf(nodeList.get(i).getValue(Constants.NODE_VALUE));
+            String linkWeight = String.valueOf(linkList.get(i).getValue(Constants.WEIGHT));
+            String positionString = String.valueOf(positionInData);
+            String iterationString = String.valueOf(iterationThroughData);
+            String nodeNumber = String.valueOf(i);
+            System.out.println("Iteration: "+ iterationString);
+            System.out.println("Position In Data Set: "+ positionInData);
+            System.out.println("Node "+nodeNumber+" Value : "+nodeValue);
+            System.out.println("Link "+nodeNumber+" Weight : "+linkWeight);
+            System.out.println("Adaline Node: "+aNode.getValue(Constants.NODE_VALUE));
+        }
     }
 }
