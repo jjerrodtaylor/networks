@@ -3,21 +3,16 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>edu.mason.insf.api</groupId>
-  <artifactId>NetworkedProject</artifactId>
+  <artifactId>NetworkedAPI</artifactId>
   <version>1</version>
-  <packaging>pom</packaging>
+  <packaging>jar</packaging>
 
-  <name>NetworkedProject</name>
+  <name>NetworkedAPI</name>
   <url>http://maven.apache.org</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-
-  <modules>
-      <module>networks</module>
-      <module>NetworkedAPI</module>
-  </modules>
 
   <dependencies>
     <dependency>
