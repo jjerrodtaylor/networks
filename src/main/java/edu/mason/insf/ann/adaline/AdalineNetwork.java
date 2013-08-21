@@ -140,6 +140,7 @@ public class AdalineNetwork extends AdalineNode
                     percentage = percentage*-1;
                 }
 
+                int l=0;
                 Double answerToCompareTo = trainingData.get(i).getOutputSet().get(0);
                 Double upperBound = adalineNode.getValue(Constants.NODE_VALUE)+percentage;
                 Double lowerBound = adalineNode.getValue(Constants.NODE_VALUE)-percentage;
