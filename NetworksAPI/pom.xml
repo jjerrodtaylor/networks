@@ -21,5 +21,10 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+      <dependency>
+          <groupId>org.jboss.resteasy</groupId>
+          <artifactId>resteasy-jaxrs</artifactId>
+          <version>3.0.3.Final</version>
+      </dependency>
   </dependencies>
 </project>
