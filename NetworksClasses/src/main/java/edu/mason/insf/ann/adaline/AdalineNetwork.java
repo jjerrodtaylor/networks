@@ -1,6 +1,7 @@
 package edu.mason.insf.ann.adaline;
 
 import edu.mason.insf.ann.BaseLink;
+import edu.mason.insf.ann.BaseNetwork;
 import edu.mason.insf.ann.BiasNode;
 import edu.mason.insf.ann.InputNode;
 import edu.mason.insf.ann.utils.Constants;
@@ -8,11 +9,10 @@ import edu.mason.insf.ann.utils.Helper;
 import edu.mason.insf.ann.utils.Pattern;
 import java.util.ArrayList;
 
-public class AdalineNetwork extends AdalineNode
+public class AdalineNetwork extends BaseNetwork//  AdalineNode
 {
+
     private BiasNode biasNode = new BiasNode(1.0);
-    private ArrayList<InputNode> nodeList = new ArrayList<InputNode>();
-    private ArrayList<BaseLink> linkList = new ArrayList<BaseLink>();
     private AdalineNode adalineNode = null;
     private ArrayList<Pattern<Double>> trainingData;
     private ArrayList<Pattern<Double>> testData;
@@ -21,26 +21,6 @@ public class AdalineNetwork extends AdalineNode
     public AdalineNetwork(Double learningRate)
     {
         adalineNode = new AdalineNode(learningRate);
-    }
-
-    public ArrayList<InputNode> getNodeList()
-    {
-        return nodeList;
-    }
-
-    public void setNodeList(ArrayList<InputNode> nodeList)
-    {
-        this.nodeList = nodeList;
-    }
-
-    public ArrayList<BaseLink> getLinkList()
-    {
-        return linkList;
-    }
-
-    public void setLinkList(ArrayList<BaseLink> linkList)
-    {
-        this.linkList = linkList;
     }
 
     public AdalineNode getAdalineNode()
@@ -73,50 +53,11 @@ public class AdalineNetwork extends AdalineNode
         this.testData = testData;
     }
 
-    //this initializes all of the other nodes except for the adaline node
-    public void initializeNodes(int numberOfNodes)
-    {
-        BiasNode biasNode = new BiasNode(1.0);
-
-        for(int i=0; i<numberOfNodes;i++)
-        {
-            InputNode newNode = new InputNode();
-            nodeList.add(newNode);
-        }
-    }
-
-    public void initializeLinks(int numberOfLinks)
-    {
-        for(int i=0; i<numberOfLinks; i++)
-        {
-            BaseLink newLink = new BaseLink();
-            linkList.add(newLink);
-        }
-    }
-
-    public void connectNodesAndLinks()
-    {
-        for(int i=0; i < nodeList.size(); i++)
-        {
-            nodeList.get(i).createLinkTo(adalineNode,linkList.get(i));
-        }
-    }
-
     public void connectBiasNode()
     {
         BaseLink newLink = new BaseLink();
         linkList.add(newLink);
         biasNode.createLinkTo(adalineNode,linkList.get(linkList.size()-1));
-    }
-
-    public void setInputNodeValues(Pattern<Double> inputPattern)
-    {
-
-        for(int i=0; i<nodeList.size()-1; i++)
-        {
-            nodeList.get(i).setValue(Constants.NODE_VALUE, inputPattern.getInputPatternValue(i));
-        }
-        nodeList.get(nodeList.size()-1).setValue(Constants.NODE_VALUE,inputPattern.getOutputPatternValue(0));
     }
 
     public void trainNetwork()
