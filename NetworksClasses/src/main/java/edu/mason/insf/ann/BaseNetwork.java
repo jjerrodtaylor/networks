@@ -16,6 +16,11 @@ public class BaseNetwork extends BaseNode {
         return nodeList;
     }
 
+    public BaseNode getNode(int number)
+    {
+        return this.nodeList.get(number);
+    }
+
     public void setNodeList(ArrayList<InputNode> nodeList)
     {
         this.nodeList = nodeList;
@@ -44,7 +49,8 @@ public class BaseNetwork extends BaseNode {
     {
         for(int i=0; i < nodeList.size(); i++)
         {
-            nodeList.get(i).createLinkTo(node,linkList.get(i));
+            nodeList.get(i).createLinkTo(node, linkList.get(i));
+            node.createLinkTo(nodeList.get(i), linkList.get(i));
         }
     }
 

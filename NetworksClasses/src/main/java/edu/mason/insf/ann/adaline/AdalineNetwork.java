@@ -18,6 +18,16 @@ public class AdalineNetwork extends BaseNetwork//  AdalineNode
     private ArrayList<Pattern<Double>> testData;
     private Helper helper = new Helper();
 
+    public BiasNode getBiasNode()
+    {
+        return this.biasNode;
+    }
+
+    public BaseLink getBiasNodeLink()
+    {
+        return biasNode.getOutLinks().getFirst();
+    }
+
     public AdalineNetwork(Double learningRate)
     {
         adalineNode = new AdalineNode(learningRate);
@@ -58,6 +68,7 @@ public class AdalineNetwork extends BaseNetwork//  AdalineNode
         BaseLink newLink = new BaseLink();
         linkList.add(newLink);
         biasNode.createLinkTo(adalineNode,linkList.get(linkList.size()-1));
+        adalineNode.createLinkTo(biasNode,linkList.get(linkList.size()-1));
     }
 
     public void trainNetwork()

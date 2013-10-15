@@ -11,4 +11,5 @@ public class Constants {
     public static int NODE_VALUE = 3;
     public static int MODE = 4;
     public static int INPUT_DATA = 5;
+    public static String FILE_NAME = "/Users/jamaaltaylor/Documents/workspace/networks/NetworksClasses/src/test/resources/breastcancer.csv";
 }

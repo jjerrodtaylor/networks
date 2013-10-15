@@ -84,7 +84,6 @@ public class BaseNode {
         this.outLinks = outLinks;
     }
 
-
     public int getValueSize()
     {
         return value.size();
@@ -116,5 +115,4 @@ public class BaseNode {
         link.setOutNode(toNode);
         link.setInNode(this);
     }
-
 }
