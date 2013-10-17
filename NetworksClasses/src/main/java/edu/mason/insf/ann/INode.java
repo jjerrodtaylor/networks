@@ -1,12 +1,6 @@
 package edu.mason.insf.ann;
 
-/**
- * Created with IntelliJ IDEA.
- * User: jamaaltaylor
- * Date: 5/16/13
- * Time: 9:02 PM
- * To change this template use File | Settings | File Templates.
- */
+
 public interface INode {
 
     public void run();

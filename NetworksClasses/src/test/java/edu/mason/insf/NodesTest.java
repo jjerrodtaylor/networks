@@ -4,13 +4,7 @@ import org.junit.Test;
 import java.util.LinkedList;
 import static org.junit.Assert.assertEquals;
 
-/**
- * Created with IntelliJ IDEA.
- * User: jamaaltaylor
- * Date: 5/17/13
- * Time: 7:20 PM
- * To change this template use File | Settings | File Templates.
- */
+
 public class NodesTest {
 
     BaseNode baseNode = new BaseNode();

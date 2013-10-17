@@ -1,6 +1,5 @@
 package edu.mason.insf;
 
-
 import edu.mason.insf.ann.adaline.AdalineNetwork;
 import edu.mason.insf.ann.adaline.AdalineNode;
 import edu.mason.insf.ann.utils.Helper;
