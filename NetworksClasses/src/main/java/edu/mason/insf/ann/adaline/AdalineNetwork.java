@@ -9,7 +9,7 @@ import edu.mason.insf.ann.utils.Helper;
 import edu.mason.insf.ann.utils.Pattern;
 import java.util.ArrayList;
 
-public class AdalineNetwork extends BaseNetwork//  AdalineNode
+public class AdalineNetwork extends BaseNetwork
 {
 
     private BiasNode biasNode = new BiasNode(1.0);
