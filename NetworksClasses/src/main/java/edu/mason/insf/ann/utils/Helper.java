@@ -1,8 +1,6 @@
 package edu.mason.insf.ann.utils;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,6 +21,42 @@ public class Helper {
     public static double generateRandomDouble(int min, int max)
     {
         return min + (double)(Math.random() * ((max - min) + 1));
+    }
+
+    public void writeFile()
+    {
+
+    }
+
+    public void generateAdalineTrainingData(int howMany, String nameOfFile, String whereToWrite)
+    {
+        double x;
+        double y;
+        double y1;
+        double output;
+        BufferedWriter bw = null;
+        FileOutputStream fOutStream = null;
+
+        for(int i=0; i<howMany; i++)
+        {
+            x = Helper.generateRandomDouble(-1,1);
+            y = Helper.generateRandomDouble(-1,1);
+            y1= (-5*x-2)/-4;
+
+            if(y<y1)output=1;
+            else output=-1;
+
+            try
+            {
+                //String.valueOf(i);
+                bw = new BufferedWriter(new FileWriter(nameOfFile));
+                bw.write("i "+i+"x "+x+"y "+y);
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
     }
 
     public ArrayList<String> readFileToMemory(String filepath)
