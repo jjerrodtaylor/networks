@@ -1,8 +1,13 @@
 package edu.mason.insf.ann.backpropagation;
-
+import edu.mason.insf.ann.BaseNode;
 import edu.mason.insf.ann.IFeedForward;
 
-public class BPNode implements IFeedForward {
+public class BPNode extends BaseNode implements IFeedForward {
+
+    public BPNode()
+    {
+        super();
+    }
 
     public double transferFunction(double value)
     {
