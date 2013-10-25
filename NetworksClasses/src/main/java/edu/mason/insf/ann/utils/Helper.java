@@ -8,11 +8,14 @@ import java.util.StringTokenizer;
 
 import edu.mason.insf.ann.BaseLink;
 import edu.mason.insf.ann.InputNode;
+import edu.mason.insf.ann.adaline.AdalineNetwork;
 import edu.mason.insf.ann.adaline.AdalineNode;
 import edu.mason.insf.ann.utils.Pattern;
 
 public class Helper {
 
+    public BufferedWriter bw = null;
+    public FileOutputStream fOutStream = null;
     public Helper()
     {
         super();
@@ -23,19 +26,47 @@ public class Helper {
         return min + (double)(Math.random() * ((max - min) + 1));
     }
 
-    public void writeFile()
-    {
 
+    /*
+    * A generic function to write data to a file.
+    * */
+    public void writeFile(ArrayList<String> linesToWrite, String nameOfFile)
+    {
+        try
+        {
+            bw = new BufferedWriter(new FileWriter(nameOfFile));
+
+            for(String s: linesToWrite)
+            {
+                bw.write(s);
+                bw.newLine();
+            }
+
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
-    public void generateAdalineTrainingData(int howMany, String nameOfFile, String whereToWrite)
+    public void closeFileWriter()
     {
-        double x;
-        double y;
-        double y1;
-        double output;
-        BufferedWriter bw = null;
-        FileOutputStream fOutStream = null;
+        try
+        {
+            bw.close();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<String> generateAdalineTrainingData(int howMany)
+    {
+        double x,y,y1,output;
+        ArrayList<String> data = new ArrayList<String>();
+
+        //data.add("i, x, y, output");
 
         for(int i=0; i<howMany; i++)
         {
@@ -45,18 +76,13 @@ public class Helper {
 
             if(y<y1)output=1;
             else output=-1;
-
-            try
-            {
-                //String.valueOf(i);
-                bw = new BufferedWriter(new FileWriter(nameOfFile));
-                bw.write("i "+i+"x "+x+"y "+y);
-            }
-            catch (Exception e)
-            {
-
-            }
+            data.add(String.valueOf(i)+","+
+                     String.valueOf(x)+","+
+                     String.valueOf(y)+","+
+                     String.valueOf(output));
         }
+
+        return data;
     }
 
     public ArrayList<String> readFileToMemory(String filepath)
@@ -158,27 +184,23 @@ public class Helper {
         return newList;
     }
 
-    public void printNetworkValues(ArrayList<InputNode> nodeList,
-                                   ArrayList<BaseLink> linkList,
-                                   AdalineNode aNode,
-                                   Integer iterationThroughData,
-                                   Integer positionInData)
+    public String captureTrainingData(AdalineNetwork aNetwork, Integer iterationThroughData)
     {
-        System.out.println("Weights for input notes");
+        String outputData = "";
 
         //for each inputnode in the network
-        for(int i=0; i<nodeList.size(); i++)
+        for(int i=0; i<aNetwork.getNodeList().size(); i++)
         {
-            String nodeValue = String.valueOf(nodeList.get(i).getValue(Constants.NODE_VALUE));
-            String linkWeight = String.valueOf(linkList.get(i).getValue(Constants.WEIGHT));
-            String positionString = String.valueOf(positionInData);
+            String nodeValue = String.valueOf(aNetwork.getNodeList().get(i).getValue(Constants.NODE_VALUE));
+            String linkWeight = String.valueOf(aNetwork.getLinkList().get(i).getValue(Constants.WEIGHT));
             String iterationString = String.valueOf(iterationThroughData);
             String nodeNumber = String.valueOf(i);
-            System.out.println("Iteration: "+ iterationString);
-            System.out.println("Position In Data Set: "+ positionInData);
-            System.out.println("Node "+nodeNumber+" Value : "+nodeValue);
-            System.out.println("Link "+nodeNumber+" Weight : "+linkWeight);
-            System.out.println("Adaline Node: "+aNode.getValue(Constants.NODE_VALUE));
+            outputData = outputData + "Iteration: "+ iterationString;
+            outputData = outputData + "Node " + nodeNumber + " Value : " + nodeValue;
+            outputData = outputData + "Link " + nodeNumber + " Weight : " + linkWeight;
+            outputData = outputData + "Adaline Node: " + aNetwork.getAdalineNode().getValue(Constants.NODE_VALUE);
         }
+
+        return outputData;
     }
 }

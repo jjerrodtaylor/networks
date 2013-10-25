@@ -5,6 +5,8 @@ import edu.mason.insf.ann.utils.Constants;
 import edu.mason.insf.ann.utils.Pattern;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+//import org.jsoup.Jsoup;
+
 public class HelperTest {
 
     Helper helper = new Helper();
@@ -20,5 +22,27 @@ public class HelperTest {
 
         ArrayList<Pattern<Double>> trainingSet = helper.partitionDataSet(.10,testDataAsPattern);
         assertEquals(69, trainingSet.size());
+    }
+
+    @Test
+    public void testGenerateAdalineData()
+    {
+        ArrayList<String> testData = helper.generateAdalineTrainingData(25);
+        assertEquals(testData.size(),25);
+    }
+
+    @Test
+    public void testWriteFile()
+    {
+        ArrayList<String> testData = helper.generateAdalineTrainingData(25);
+        helper.writeFile(testData,"testfile.txt");
+        helper.closeFileWriter();
+    }
+
+    @Test
+    public void prozTest()
+    {
+        //Document doc = Jsoup.connect("http://en.wikipedia.org/").get();
+
     }
 }
