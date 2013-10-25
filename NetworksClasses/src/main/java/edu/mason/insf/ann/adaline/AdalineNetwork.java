@@ -18,6 +18,20 @@ public class AdalineNetwork extends BaseNetwork
     private ArrayList<Pattern<Double>> testData;
     private Helper helper = new Helper();
 
+    public AdalineNetwork()
+    {
+        adalineNode = new AdalineNode(.45);
+        this.connectBiasNode();
+    }
+
+    public AdalineNetwork(Double learningRate, Integer numOfNodes)
+    {
+        adalineNode = new AdalineNode(learningRate);
+        this.initializeNodes(numOfNodes);
+        this.initializeLinks(numOfNodes);
+        this.connectBiasNode();
+    }
+
     public BiasNode getBiasNode()
     {
         return this.biasNode;
@@ -26,11 +40,6 @@ public class AdalineNetwork extends BaseNetwork
     public BaseLink getBiasNodeLink()
     {
         return biasNode.getOutLinks().getFirst();
-    }
-
-    public AdalineNetwork(Double learningRate)
-    {
-        adalineNode = new AdalineNode(learningRate);
     }
 
     public AdalineNode getAdalineNode()
@@ -63,7 +72,7 @@ public class AdalineNetwork extends BaseNetwork
         this.testData = testData;
     }
 
-    public void connectBiasNode()
+    private void connectBiasNode()
     {
         BaseLink newLink = new BaseLink();
         linkList.add(newLink);
@@ -71,16 +80,22 @@ public class AdalineNetwork extends BaseNetwork
         adalineNode.createLinkTo(biasNode,linkList.get(linkList.size()-1));
     }
 
-    public void trainNetwork()
+    public void trainNetwork(Boolean caputreData)
     {
 
         int good = 0;
+        ArrayList<String> outputData = new ArrayList<String>();
 
         //train until all patterns are good.
         while(good < trainingData.size())
         {
             for(int i=0; i< trainingData.size(); i++)
             {
+                if(caputreData)
+                {
+                    outputData.add(helper.captureTrainingData(this,i));
+                }
+
                 this.setInputNodeValues(trainingData.get(i));
                 adalineNode.run();
                 //helper.printNetworkValues(nodeList, linkList, adalineNode, i, );
@@ -104,6 +119,13 @@ public class AdalineNetwork extends BaseNetwork
                     good++;
                 }
             }
+        }
+
+        //if you are capturing data then write it to a file
+        if(caputreData)
+        {
+            helper.writeFile(outputData,Constants.DESKTOP_PATH);
+            helper.closeFileWriter();
         }
     }
 }

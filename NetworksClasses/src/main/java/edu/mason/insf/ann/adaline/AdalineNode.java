@@ -27,6 +27,10 @@ public class AdalineNode extends BaseNode implements IFeedForward
         value.put(Constants.WEIGHT, Helper.generateRandomDouble(-1,1));
     }
 
+    /*
+    * The delta rule changes the weight values by a percentage called the learning rate.
+    * The learning rate is used to adjust the weights of the links.
+    * */
     public void learn()
     {
         Double nodeValue = value.get(Constants.NODE_VALUE);

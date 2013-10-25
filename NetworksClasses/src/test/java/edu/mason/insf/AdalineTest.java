@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class AdalineTest {
 
     Helper helper = new Helper();
-    AdalineNetwork aNetwork = new AdalineNetwork(.45);
+    AdalineNetwork aNetwork = new AdalineNetwork();
     AdalineNode aNode = new AdalineNode();
     ArrayList<String> testData = helper.readFileToMemory(Constants.FILE_NAME);
     ArrayList<Pattern<Double>> inputPatterns = helper.turnListToPattern(testData);
@@ -28,7 +28,6 @@ public class AdalineTest {
         aNetwork.setAdalineNode(aNode);
         aNetwork.initializeNodes(10);
         aNetwork.initializeLinks(11);
-        aNetwork.connectBiasNode();
         aNetwork.connectNodesAndLinks(aNode);
     }
 
@@ -77,7 +76,5 @@ public class AdalineTest {
         assertEquals((double)1.0,(double)aNetwork.getNodeList().get(7).getValue(Constants.NODE_VALUE),0.0);
         assertEquals((double)1.0,(double)aNetwork.getNodeList().get(8).getValue(Constants.NODE_VALUE),0.0);
         assertEquals((double)2.0,(double)aNetwork.getNodeList().get(9).getValue(Constants.NODE_VALUE),0.0);
-
-        //aNetwork.trainNetwork();
     }
 }
