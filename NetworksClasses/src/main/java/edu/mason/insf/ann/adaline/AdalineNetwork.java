@@ -98,19 +98,19 @@ public class AdalineNetwork extends BaseNetwork
 
                 this.setInputNodeValues(trainingData.get(i));
                 adalineNode.run();
-                //helper.printNetworkValues(nodeList, linkList, adalineNode, i, );
 
-                Double percentage = adalineNode.getValue(Constants.NODE_VALUE) * .02;
-
-                if(percentage < 0)
-                {
-                    percentage = percentage*-1;
-                }
-
-                Double answerToCompareTo = trainingData.get(i).getOutputSet().get(0);
-                Double upperBound = adalineNode.getValue(Constants.NODE_VALUE)+percentage;
-                Double lowerBound = adalineNode.getValue(Constants.NODE_VALUE)-percentage;
-                if(answerToCompareTo <= lowerBound || answerToCompareTo >= upperBound)
+//                Double percentage = adalineNode.getValue(Constants.NODE_VALUE) * .02;
+//
+//                if(percentage < 0)
+//                {
+//                    percentage = percentage*-1;
+//                }
+//
+//                Double answerToCompareTo = trainingData.get(i).getOutputSet().get(0);
+//                Double upperBound = adalineNode.getValue(Constants.NODE_VALUE)+percentage;
+//                Double lowerBound = adalineNode.getValue(Constants.NODE_VALUE)-percentage;
+//                if(answerToCompareTo <= lowerBound || answerToCompareTo >= upperBound)
+                if(trainingData.get(i).getOutputSet().get(0) != adalineNode.getValue(Constants.NODE_VALUE))
                 {
                     adalineNode.learn();
                 }
