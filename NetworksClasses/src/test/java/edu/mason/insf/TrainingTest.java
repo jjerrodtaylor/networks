@@ -17,11 +17,11 @@ public class TrainingTest {
     ArrayList<Pattern<Double>> inputPatterns = helper.turnListToPattern(testData);
     ArrayList<Pattern<Double>> trainingData = helper.partitionDataSet(.1, inputPatterns);
 
-    @Test
+    //@Test
     public void Train()
     {
         aNetwork.setTrainingData(trainingData);
-        aNetwork.trainNetwork();
+        aNetwork.trainNetwork(true);
     }
 
 
