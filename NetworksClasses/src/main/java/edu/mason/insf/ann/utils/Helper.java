@@ -49,6 +49,11 @@ public class Helper {
         }
     }
 
+    public void writeCSV(ArrayList<String> linesToWrite, String nameOfFile)
+    {
+
+    }
+
     public void closeFileWriter()
     {
         try
@@ -195,10 +200,10 @@ public class Helper {
             String linkWeight = String.valueOf(aNetwork.getLinkList().get(i).getValue(Constants.WEIGHT));
             String iterationString = String.valueOf(iterationThroughData);
             String nodeNumber = String.valueOf(i);
-            outputData = outputData + "Iteration: "+ iterationString;
-            outputData = outputData + "Node " + nodeNumber + " Value : " + nodeValue;
-            outputData = outputData + "Link " + nodeNumber + " Weight : " + linkWeight;
-            outputData = outputData + "Adaline Node: " + aNetwork.getAdalineNode().getValue(Constants.NODE_VALUE);
+            outputData = outputData + "Iteration: "+ iterationString+",";
+            outputData = outputData + "Node " + nodeNumber + " Value : " + nodeValue+",";
+            outputData = outputData + "Link " + nodeNumber + " Weight : " + linkWeight+",";
+            outputData = outputData + "Adaline Node: " + aNetwork.getAdalineNode().getValue(Constants.NODE_VALUE)+",";
         }
 
         return outputData;
