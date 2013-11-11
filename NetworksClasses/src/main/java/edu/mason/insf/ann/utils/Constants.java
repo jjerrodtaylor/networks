@@ -14,5 +14,5 @@ public class Constants {
     public static int MOMENTUM = 6;
     public static String FILE_NAME = "/Users/jamaaltaylor/Documents/workspace/networks/NetworksClasses/src/test/resources/breastcancer.csv";
     public static String TEST_FILE = "/Users/jamaaltaylor/Documents/workspace/networks/NetworksClasses/src/test/resources/testfile.txt";
-    public static String DESKTOP_PATH = "/Users/jamaaltaylor/Desktop";
+    public static String DESKTOP_PATH = "/Users/jamaaltaylor/Desktop/trainingData.csv";
 }
