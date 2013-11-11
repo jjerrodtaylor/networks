@@ -97,5 +97,12 @@
             <artifactId>jsoup</artifactId>
             <version>1.7.2</version>
         </dependency>
+        <!-- Encog NN framework -->
+        <dependency>
+            <groupId>org.encog</groupId>
+            <artifactId>encog-core</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+
     </dependencies>
 </project>
