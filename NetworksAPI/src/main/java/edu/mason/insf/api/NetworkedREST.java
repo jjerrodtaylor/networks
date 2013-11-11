@@ -7,6 +7,16 @@ import javax.ws.rs.Path;
 public class NetworkedREST {
 
     @GET
-    @Path("/adalineweights")
-    public ServiceResponse
+    @Path("/network/weights")
+    public ServiceResponse sampleGetRequest()
+    {
+        return new ServiceResponse();
+    }
+
+    @POST
+    @Path("/network/weights")
+    public ServiceResponse samplePostRequest()
+    {
+        return new ServiceResponse();
+    }
 }
