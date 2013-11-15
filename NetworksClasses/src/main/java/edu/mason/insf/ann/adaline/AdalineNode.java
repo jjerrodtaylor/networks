@@ -13,12 +13,18 @@ import java.util.LinkedList;
  */
 public class AdalineNode extends BaseNode implements IFeedForward
 {
-
+    /**
+     * Bare Adaline node constructor
+     */
     public AdalineNode()
     {
         super();
     }
 
+    /**
+     * Adaline node constructor that takes a learning rate parameter
+     * @param learningRate
+     */
     public AdalineNode(Double learningRate)
     {
         value.put(Constants.LEARNING_RATE,learningRate);
@@ -27,10 +33,11 @@ public class AdalineNode extends BaseNode implements IFeedForward
         value.put(Constants.WEIGHT, Helper.generateRandomDouble(-1,1));
     }
 
-    /*
+   /**
+    * The function that does the "learning" for the adaline network.
     * The delta rule changes the weight values by a percentage called the learning rate.
     * The learning rate is used to adjust the weights of the links.
-    * */
+     */
     public void learn()
     {
         Double nodeValue = value.get(Constants.NODE_VALUE);
@@ -50,6 +57,10 @@ public class AdalineNode extends BaseNode implements IFeedForward
         }
     }
 
+    /**
+     * A void function that runs the adaline network. This is the function that passes values
+     * through the transfer function.
+     */
     public void run()
     {
         double total = 0;
@@ -68,6 +79,11 @@ public class AdalineNode extends BaseNode implements IFeedForward
         this.setValue(Constants.NODE_VALUE, this.transferFunction(total));
     }
 
+    /**
+     * Function returns a -1 if the value passed to it is less than 0 and 1 otherwise.
+     * @param value
+     * @return
+     */
     public double transferFunction(double value)
     {
         if(value < 0)
@@ -80,6 +96,10 @@ public class AdalineNode extends BaseNode implements IFeedForward
         }
     }
 
+    /**
+     * Returns a string that tells you that this particular type of node is an Adaline node.
+     * @return
+     */
     public String getName() {
         return "AdalineNode";
     }

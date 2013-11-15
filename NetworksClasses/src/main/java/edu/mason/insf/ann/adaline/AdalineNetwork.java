@@ -9,6 +9,9 @@ import edu.mason.insf.ann.utils.Helper;
 import edu.mason.insf.ann.utils.Pattern;
 import java.util.ArrayList;
 
+/**
+ *
+ */
 public class AdalineNetwork extends BaseNetwork
 {
 
@@ -18,12 +21,20 @@ public class AdalineNetwork extends BaseNetwork
     private ArrayList<Pattern<Double>> testData;
     private Helper helper = new Helper();
 
+    /**
+     *
+     */
     public AdalineNetwork()
     {
         adalineNode = new AdalineNode(.45);
         this.connectBiasNode();
     }
 
+    /**
+     *
+     * @param learningRate
+     * @param numOfNodes
+     */
     public AdalineNetwork(Double learningRate, Integer numOfNodes)
     {
         adalineNode = new AdalineNode(learningRate);
@@ -32,46 +43,81 @@ public class AdalineNetwork extends BaseNetwork
         this.connectBiasNode();
     }
 
+    /**
+     *
+     * @return
+     */
     public BiasNode getBiasNode()
     {
         return this.biasNode;
     }
 
+    /**
+     *
+     * @return
+     */
     public BaseLink getBiasNodeLink()
     {
         return biasNode.getOutLinks().getFirst();
     }
 
+    /**
+     *
+     * @return
+     */
     public AdalineNode getAdalineNode()
     {
         return adalineNode;
     }
 
+    /**
+     *
+     * @param adalineNode
+     */
     public void setAdalineNode(AdalineNode adalineNode)
     {
         this.adalineNode = adalineNode;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Pattern<Double>> getTrainingData()
     {
         return trainingData;
     }
 
+    /**
+     *
+     * @param trainingData
+     */
     public void setTrainingData(ArrayList<Pattern<Double>> trainingData)
     {
         this.trainingData = trainingData;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Pattern<Double>> getTestData()
     {
         return testData;
     }
 
+    /**
+     *
+     * @param testData
+     */
     public void setTestData(ArrayList<Pattern<Double>> testData)
     {
         this.testData = testData;
     }
 
+    /**
+     *
+     */
     private void connectBiasNode()
     {
         BaseLink newLink = new BaseLink();
@@ -80,6 +126,10 @@ public class AdalineNetwork extends BaseNetwork
         adalineNode.createLinkTo(biasNode,linkList.get(linkList.size()-1));
     }
 
+    /**
+     *
+     * @param caputreData
+     */
     public void trainNetwork(Boolean caputreData)
     {
 
