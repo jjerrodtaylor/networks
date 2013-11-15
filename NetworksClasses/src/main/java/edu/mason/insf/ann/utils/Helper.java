@@ -12,6 +12,9 @@ import edu.mason.insf.ann.adaline.AdalineNetwork;
 import edu.mason.insf.ann.adaline.AdalineNode;
 import edu.mason.insf.ann.utils.Pattern;
 
+/**
+ * A class containing helper functions for things that aren't directly related to neural networks
+ **/
 public class Helper {
 
     public BufferedWriter bw = null;
@@ -21,15 +24,23 @@ public class Helper {
         super();
     }
 
+    /**
+     * Generates a random double between the min and the max parameters
+     * @param min
+     * @param max
+     * @return double
+     */
     public static double generateRandomDouble(int min, int max)
     {
         return min + (double)(Math.random() * ((max - min) + 1));
     }
 
 
-    /*
-    * A generic function to write data to a file.
-    * */
+    /**
+     * Function takes an Arraylist of Strings as well as the path for where the file should be written to.
+     * @param linesToWrite
+     * @param nameOfFile
+     */
     public void writeFile(ArrayList<String> linesToWrite, String nameOfFile)
     {
         try
@@ -49,11 +60,9 @@ public class Helper {
         }
     }
 
-    public void writeCSV(ArrayList<String> linesToWrite, String nameOfFile)
-    {
-
-    }
-
+    /**
+     * A wrapper function for closing Java's BufferedWritter object.
+     */
     public void closeFileWriter()
     {
         try
@@ -66,6 +75,11 @@ public class Helper {
         }
     }
 
+    /**
+     *
+     * @param howMany
+     * @return
+     */
     public ArrayList<String> generateAdalineTrainingData(int howMany)
     {
         double x,y,y1,output;
@@ -90,6 +104,11 @@ public class Helper {
         return data;
     }
 
+    /**
+     *
+     * @param filepath
+     * @return
+     */
     public ArrayList<String> readFileToMemory(String filepath)
     {
         BufferedReader br = null;
@@ -124,6 +143,11 @@ public class Helper {
         return fileContents;
     }
 
+    /**
+     *
+     * @param listOfStrings
+     * @return
+     */
     public String turnListToString(ArrayList<String> listOfStrings)
     {
         String longString = "";
@@ -135,6 +159,11 @@ public class Helper {
         return longString;
     }
 
+    /**
+     *
+     * @param listOfStrings
+     * @return
+     */
     public ArrayList<Pattern<Double>> turnListToPattern(ArrayList<String> listOfStrings)
     {
         //I'm just going to assume that they are all integers for right now.
@@ -170,11 +199,22 @@ public class Helper {
         return patterns;
     }
 
+    /**
+     *
+     * @param s
+     * @return
+     */
     public String[] splitString(String s)
     {
         return s.split("(?!^)");
     }
 
+    /**
+     *
+     * @param percentToPartition
+     * @param dataSet
+     * @return
+     */
     public ArrayList<Pattern<Double>> partitionDataSet(Double percentToPartition, ArrayList<Pattern<Double>> dataSet)
     {
         ArrayList<Pattern<Double>> newList = new ArrayList<Pattern<Double>>();
@@ -189,6 +229,12 @@ public class Helper {
         return newList;
     }
 
+    /**
+     *
+     * @param aNetwork
+     * @param iterationThroughData
+     * @return
+     */
     public String captureTrainingData(AdalineNetwork aNetwork, Integer iterationThroughData)
     {
         String outputData = "";

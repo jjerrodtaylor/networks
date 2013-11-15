@@ -1,19 +1,20 @@
 package edu.mason.insf.ann.utils;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.StringTokenizer;
 
+/**
+ *
+ * @param <T>
+ */
 public class Pattern<T extends Comparable<T>> {
 
     public int id;
     public LinkedList<T> inputSet;
     public LinkedList<T> outputSet;
 
+    /**
+     *
+     */
     public Pattern()
     {
         super();

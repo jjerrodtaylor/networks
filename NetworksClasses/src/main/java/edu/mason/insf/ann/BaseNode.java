@@ -34,61 +34,110 @@ public class BaseNode {
     protected LinkedList<BaseLink> inLinks = new LinkedList<BaseLink>();     //List for input Links
     protected LinkedList<BaseLink> outLinks = new LinkedList<BaseLink>();    //List for output links
 
+    /**
+     *
+     */
     public BaseNode()
     {
         super();
-        //initiate
     }
 
-    //for now I will only work with double even though I want to make things generic eventually
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Double getValue(int id)
     {
         return value.get(id);
     }
 
+    /**
+     *
+     * @param id
+     * @param newValue
+     */
     public void setValue(int id, Double newValue)
     {
         this.value.put(id,newValue);
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Double getError(int id)
     {
         return this.error.get(id);
     }
 
+    /**
+     *
+     * @param id
+     * @param newError
+     */
     public void setError(int id, Double newError)
     {
         this.error.put(id, newError);
     }
 
+    /**
+     *
+     * @return
+     */
     public int getId()
     {
         return id;
     }
 
+    /**
+     *
+     * @return
+     */
     public LinkedList<BaseLink> getInLinks()
     {
         return inLinks;
     }
 
+    /**
+     *
+     * @return
+     */
     public LinkedList<BaseLink> getOutLinks()
     {
         return outLinks;
     }
 
+    /**
+     *
+     * @param inLinks
+     */
     public void setInLinks(LinkedList<BaseLink> inLinks) {
         this.inLinks = inLinks;
     }
 
+    /**
+     *
+     * @param outLinks
+     */
     public void setOutLinks(LinkedList<BaseLink> outLinks) {
         this.outLinks = outLinks;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getValueSize()
     {
         return value.size();
     }
 
+    /**
+     *
+     * @return
+     */
     public int getErrorSize()
     {
         return error.size();
@@ -107,6 +156,10 @@ public class BaseNode {
         link.setInNode(this);
     }
 
+    /**
+     * Create a link with the node that is being passed.
+     * @param toNode
+     */
     public void createLinkTo(BaseNode toNode)
     {
         BaseLink link = new BaseLink();
