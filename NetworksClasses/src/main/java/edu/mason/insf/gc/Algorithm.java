@@ -92,9 +92,11 @@ public class Algorithm {
             //find a gene which represents an operator
             if(bOperator)
             {
-                if( (this_gene < 10) || (this_gene > 13))
+                //if( (this_gene < 10) || (this_gene > 13))
             }
         }
+
+        return 1;
      }
 
 }
