@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class AdalineNetwork extends BaseNetwork
 {
 
-    private BiasNode biasNode = new BiasNode(1.0);
+    private BiasNode biasNode;// = new BiasNode(1.0);
     private AdalineNode adalineNode = null;
     private ArrayList<Pattern<Double>> trainingData;
     private ArrayList<Pattern<Double>> testData;
@@ -27,7 +27,6 @@ public class AdalineNetwork extends BaseNetwork
     public AdalineNetwork()
     {
         adalineNode = new AdalineNode(.45);
-        this.connectBiasNode();
     }
 
     /**
@@ -38,9 +37,8 @@ public class AdalineNetwork extends BaseNetwork
     public AdalineNetwork(Double learningRate, Integer numOfNodes)
     {
         adalineNode = new AdalineNode(learningRate);
-        this.initializeNodes(numOfNodes);
-        this.initializeLinks(numOfNodes);
-        this.connectBiasNode();
+        this.initializeNodes(numOfNodes,true);
+        this.initializeLinks(numOfNodes,true);
     }
 
     /**
@@ -122,8 +120,8 @@ public class AdalineNetwork extends BaseNetwork
     {
         BaseLink newLink = new BaseLink();
         linkList.add(newLink);
-        biasNode.createLinkTo(adalineNode,linkList.get(linkList.size()-1));
-        adalineNode.createLinkTo(biasNode,linkList.get(linkList.size()-1));
+        biasNode.createLinkTo(adalineNode,newLink);
+        adalineNode.createLinkTo(biasNode,newLink);
     }
 
     /**
@@ -146,7 +144,7 @@ public class AdalineNetwork extends BaseNetwork
                     outputData.add(helper.captureTrainingData(this,i));
                 }
 
-                this.setInputNodeValues(trainingData.get(i));
+                this.setInputNodeValues(trainingData.get(i),true);
                 adalineNode.run();
 
 //                Double percentage = adalineNode.getValue(Constants.NODE_VALUE) * .02;

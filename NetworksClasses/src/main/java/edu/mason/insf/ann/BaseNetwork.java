@@ -64,12 +64,23 @@ public class BaseNetwork extends BaseNode {
      *
      * @param inputPattern
      */
-    public void setInputNodeValues(Pattern<Double> inputPattern)
+    public void setInputNodeValues(Pattern<Double> inputPattern, boolean biasNodeAdded)
     {
-        for(int i=0; i<nodeList.size()-1; i++)
+        if(biasNodeAdded)
         {
-            nodeList.get(i).setValue(Constants.NODE_VALUE, inputPattern.getInputPatternValue(i));
+            for(int i=0; i<nodeList.size()-2;i++)
+            {
+                nodeList.get(i+1).setValue(Constants.NODE_VALUE, inputPattern.getInputPatternValue(i));
+            }
         }
+        else
+        {
+            for(int i=0; i<nodeList.size()-1; i++)
+            {
+                nodeList.get(i).setValue(Constants.NODE_VALUE, inputPattern.getInputPatternValue(i));
+            }
+        }
+
         nodeList.get(nodeList.size()-1).setValue(Constants.NODE_VALUE,inputPattern.getOutputPatternValue(0));
     }
 
@@ -90,12 +101,17 @@ public class BaseNetwork extends BaseNode {
      *
      * @param numberOfLinks
      */
-    public void initializeLinks(int numberOfLinks)
+    public void initializeLinks(int numberOfLinks, boolean addLinkForBiasNode)
     {
         for(int i=0; i<numberOfLinks; i++)
         {
             BaseLink newLink = new BaseLink();
             linkList.add(newLink);
+        }
+
+        if(addLinkForBiasNode)
+        {
+            linkList.add(new BaseLink());
         }
     }
 
@@ -103,9 +119,13 @@ public class BaseNetwork extends BaseNode {
      *
      * @param numberOfNodes
      */
-    public void initializeNodes(int numberOfNodes)
+    public void initializeNodes(int numberOfNodes, boolean addBiasNode)
     {
         BiasNode biasNode = new BiasNode(1.0);
+        if(addBiasNode)
+        {
+            nodeList.add(biasNode);
+        }
 
         for(int i=0; i<numberOfNodes;i++)
         {
