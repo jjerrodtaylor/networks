@@ -1,9 +1,7 @@
-package edu.mason.insf.ann;
+package edu.mason.insf.ann.base;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
-import edu.mason.insf.ann.utils.Constants;
 
 
 /**
