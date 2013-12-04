@@ -15,8 +15,8 @@
   </properties>
 
   <modules>
-      <module>networks</module>
-      <module>NetworkedAPI</module>
+      <module>NetworksClasses</module>
+      <module>NetworksAPI</module>
   </modules>
 
   <dependencies>
