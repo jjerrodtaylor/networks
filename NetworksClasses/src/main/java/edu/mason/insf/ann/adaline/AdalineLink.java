@@ -1,6 +1,6 @@
 package edu.mason.insf.ann.adaline;
 
-import edu.mason.insf.ann.BaseLink;
+import edu.mason.insf.ann.base.BaseLink;
 import edu.mason.insf.ann.utils.Helper;
 import edu.mason.insf.ann.utils.Constants;
 

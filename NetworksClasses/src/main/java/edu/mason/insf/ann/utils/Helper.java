@@ -2,15 +2,9 @@ package edu.mason.insf.ann.utils;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.StringTokenizer;
 
-import edu.mason.insf.ann.BaseLink;
-import edu.mason.insf.ann.InputNode;
 import edu.mason.insf.ann.adaline.AdalineNetwork;
-import edu.mason.insf.ann.adaline.AdalineNode;
-import edu.mason.insf.ann.utils.Pattern;
 
 /**
  * A class containing helper functions for things that aren't directly related to neural networks

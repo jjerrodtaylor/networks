@@ -1,11 +1,8 @@
 package edu.mason.insf;
 
-import edu.mason.insf.ann.utils.Constants;
-import edu.mason.insf.ann.BaseNetwork;
-import edu.mason.insf.ann.utils.Helper;
-import org.junit.Before;
+import edu.mason.insf.ann.base.BaseNetwork;
 import org.junit.Test;
-import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class BaseNetworkTest

@@ -1,12 +1,10 @@
 package edu.mason.insf.ann.adaline;
 
-import edu.mason.insf.ann.BaseLink;
-import edu.mason.insf.ann.BaseNode;
+import edu.mason.insf.ann.base.BaseLink;
+import edu.mason.insf.ann.base.BaseNode;
 import edu.mason.insf.ann.IFeedForward;
 import edu.mason.insf.ann.utils.Constants;
 import edu.mason.insf.ann.utils.Helper;
-
-import java.util.LinkedList;
 
 /**
  * The class that implements the adeline node model

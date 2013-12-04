@@ -1,6 +1,6 @@
 package edu.mason.insf.ann;
 
-import edu.mason.insf.ann.BaseNode;
+import edu.mason.insf.ann.base.BaseNode;
 
 
 /**

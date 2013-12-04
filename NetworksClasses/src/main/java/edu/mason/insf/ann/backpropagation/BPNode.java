@@ -1,5 +1,5 @@
 package edu.mason.insf.ann.backpropagation;
-import edu.mason.insf.ann.BaseNode;
+import edu.mason.insf.ann.base.BaseNode;
 import edu.mason.insf.ann.IFeedForward;
 
 public class BPNode extends BaseNode implements IFeedForward {

@@ -2,10 +2,10 @@ package edu.mason.insf;
 import edu.mason.insf.ann.adaline.AdalineLink;
 import edu.mason.insf.ann.utils.Constants;
 import org.junit.Test;
-import java.util.LinkedList;
+
 import static org.junit.Assert.assertEquals;
-import edu.mason.insf.ann.BaseLink;
-import edu.mason.insf.ann.BaseNode;
+import edu.mason.insf.ann.base.BaseLink;
+import edu.mason.insf.ann.base.BaseNode;
 
 
 public class BaseLinkTest {
