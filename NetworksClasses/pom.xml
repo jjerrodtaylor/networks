@@ -16,6 +16,15 @@
     <!-- Emma Installation
          http://mojo.codehaus.org/emma-maven-plugin/usage.html
     -->
+        <repositories>
+            <repository>
+                <id>snowtide-releases</id>
+                <url>http://maven.snowtide.com/releases</url>
+                <releases>
+                    <enabled>true</enabled>
+                </releases>
+            </repository>
+        </repositories>
     <build>
         <plugins>
             <plugin>
@@ -76,6 +85,11 @@
     </reporting>
 
     <dependencies>
+        <dependency>
+            <groupId>com.snowtide</groupId>
+            <artifactId>pdftextstream</artifactId>
+            <version>2.6.4</version>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

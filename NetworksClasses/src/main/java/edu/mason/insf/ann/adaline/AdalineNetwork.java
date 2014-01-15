@@ -172,7 +172,6 @@ public class AdalineNetwork extends BaseNetwork
         if(caputreData)
         {
             helper.writeFile(outputData,Constants.DESKTOP_PATH);
-            helper.closeFileWriter();
         }
     }
 }

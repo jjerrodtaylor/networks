@@ -18,14 +18,14 @@ public class AdalineTest {
     AdalineNetwork aNetwork;
     //AdalineNode aNode = new AdalineNode();
     ArrayList<String> testData = helper.readFileToMemory(Constants.FILE_NAME);
-    ArrayList<Pattern<Double>> inputPatterns = helper.turnListToPattern(testData);
-    ArrayList<Pattern<Double>> trainingData = helper.partitionDataSet(.1, inputPatterns);
+    //ArrayList<Pattern<Double>> inputPatterns = helper.turnListToPattern(testData);
+    //ArrayList<Pattern<Double>> trainingData = helper.partitionDataSet(.1, inputPatterns);
 
     @Before
     public void SetUp()
     {
         aNetwork = new AdalineNetwork();
-        aNetwork.setTrainingData(trainingData);
+        //aNetwork.setTrainingData(trainingData);
         aNetwork.initializeNodes(10,true);
         aNetwork.initializeLinks(10,true);
         aNetwork.connectNodesAndLinks(aNetwork.getAdalineNode());
@@ -70,7 +70,7 @@ public class AdalineTest {
     @Test
     public void testSetInputNodeValues()
     {
-        aNetwork.setInputNodeValues(trainingData.get(0),true);
+        //aNetwork.setInputNodeValues(trainingData.get(0),true);
         assertEquals((double)5.0,(double)aNetwork.getNodeList().get(1).getValue(Constants.NODE_VALUE),0.0);
         assertEquals((double)1.0,(double)aNetwork.getNodeList().get(2).getValue(Constants.NODE_VALUE),0.0);
         assertEquals((double)1.0,(double)aNetwork.getNodeList().get(3).getValue(Constants.NODE_VALUE),0.0);

@@ -23,8 +23,8 @@ public class PatternTest
     {
         Helper helper = new Helper();
         ArrayList<String> testData = helper.readFileToMemory(Constants.TEST_FILE);
-        ArrayList<Pattern<Double>> inputPatterns = helper.turnListToPattern(testData);
-        testPattern = inputPatterns.get(0);
+        //ArrayList<Pattern<Double>> inputPatterns = helper.turnListToPattern(testData);
+        //testPattern = inputPatterns.get(0);
     }
 
     /**

@@ -2,7 +2,11 @@ package edu.mason.insf.ann.utils;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.StringTokenizer;
+import java.util.regex.Pattern;
+import java.util.AbstractQueue;
+//import edu.mason.insf.ann.utils.Pattern;
 
 import edu.mason.insf.ann.adaline.AdalineNetwork;
 
@@ -11,11 +15,74 @@ import edu.mason.insf.ann.adaline.AdalineNetwork;
  **/
 public class Helper {
 
-    public BufferedWriter bw = null;
+    private BufferedWriter bw = null;
+    private BufferedReader br = null;
+    private LinkedList<String> tempList = null;
+    private LinkedList<String> stringsToWrite = null;
     public FileOutputStream fOutStream = null;
+
     public Helper()
     {
         super();
+    }
+
+    public BufferedWriter getBufferedWritter(String nameOfFile)
+    {
+        if(bw == null)
+        {
+            try
+            {
+                bw = new BufferedWriter(new FileWriter(nameOfFile));
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+        return bw;
+    }
+
+    public BufferedWriter getBufferedWritter()
+    {
+        return bw;
+    }
+
+    public BufferedReader getBufferedReader(String nameOfFile)
+    {
+        if(br == null)
+        {
+            try
+            {
+                br = new BufferedReader(new FileReader(nameOfFile));
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+        return br;
+    }
+
+    public LinkedList<String> getTempList()
+    {
+        if(tempList == null)
+        {
+            tempList = new LinkedList<String>();
+        }
+
+        return tempList;
+    }
+
+    public LinkedList<String> getStringsToWrite()
+    {
+        if(stringsToWrite == null)
+        {
+            stringsToWrite = new LinkedList<String>();
+        }
+
+        return stringsToWrite;
     }
 
     /**
@@ -29,7 +96,6 @@ public class Helper {
         return min + (double)(Math.random() * ((max - min) + 1));
     }
 
-
     /**
      * Function takes an Arraylist of Strings as well as the path for where the file should be written to.
      * @param linesToWrite
@@ -37,28 +103,22 @@ public class Helper {
      */
     public void writeFile(ArrayList<String> linesToWrite, String nameOfFile)
     {
-        try
-        {
-            bw = new BufferedWriter(new FileWriter(nameOfFile));
 
-            for(String s: linesToWrite)
+        bw = this.getBufferedWritter(nameOfFile);
+
+        for(String s: linesToWrite)
+        {
+            try
             {
                 bw.write(s);
                 bw.newLine();
             }
-
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
         }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-    }
 
-    /**
-     * A wrapper function for closing Java's BufferedWritter object.
-     */
-    public void closeFileWriter()
-    {
         try
         {
             bw.close();
@@ -96,6 +156,163 @@ public class Helper {
         }
 
         return data;
+    }
+
+    public void writeStrings()
+    {
+        BufferedWriter bw = this.getBufferedWritter();
+        LinkedList<String> stringsToWrite = this.getStringsToWrite();
+
+        try
+        {
+            bw.write(stringsToWrite.pollFirst());
+            bw.newLine();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void length1Rules(String[] splitString, String currentLine)
+    {
+        BufferedWriter bw = this.getBufferedWritter();
+        LinkedList<String> tempList = this.getTempList();
+
+        if(splitString[0].equalsIgnoreCase(""))
+        {
+            try
+            {
+            bw.write(currentLine);
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            tempList.add(currentLine);
+        }
+
+    }
+
+    public void length2Rules(String[] splitString, String currentLine)
+    {
+        BufferedWriter bw = this.getBufferedWritter();
+        LinkedList<String> tempList = this.getTempList();
+        LinkedList<String> stringsToWrite = this.getStringsToWrite();
+        String finalString = null;
+
+        if(tempList.size() >=2)
+        {
+            finalString = "";
+            int size = tempList.size();
+            for(int i = 0; i<size;i++)
+            {
+                finalString = finalString +" "+tempList.pollFirst();
+            }
+
+            finalString = finalString + " " + splitString[0];
+            stringsToWrite.add(finalString);
+            tempList.add(splitString[1]);
+
+            this.writeStrings();
+        }
+        else
+        {
+            finalString = tempList.pollFirst()+" "+splitString[0];
+            stringsToWrite.add(finalString);
+            tempList.add(splitString[1]);
+            this.writeStrings();
+        }
+    }
+
+    public void length3Rules(String[] splitString, String currentLine)
+    {
+        LinkedList<String> stringsToWrite = this.getStringsToWrite();
+        LinkedList<String> tempList = this.getTempList();
+        BufferedWriter bw = this.getBufferedWritter();
+
+        for(int i=0; i < splitString.length-1;i++)
+        {
+            stringsToWrite.add(splitString[i]);
+            this.writeStrings();
+        }
+
+        tempList.add(splitString[splitString.length-1]);
+    }
+
+    public void bigTempRules()
+    {
+        LinkedList<String> tempList = this.getTempList();
+        BufferedWriter bw = this.getBufferedWritter();
+
+        String finalString = "";
+        int length = tempList.size();
+        for(int i=0; i<length;i++)
+        {
+            finalString = finalString+" "+tempList.pollFirst();
+        }
+
+        try
+        {
+            bw.write(finalString);
+            bw.newLine();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public void formatText(String fileToRead, String fileToWrite, String regex)
+    {
+        BufferedWriter bw = null;
+        String currentLine = null;
+        LinkedList<String> tempList = this.getTempList();
+        String[] splitSting;
+        String finalString = null;
+        LinkedList<String> stringsToWrite = new LinkedList<String>();
+
+        try
+        {
+            br = this.getBufferedReader(fileToRead);
+            bw = this.getBufferedWritter(fileToWrite);
+
+            while((currentLine = br.readLine()) != null)
+            {
+                splitSting = currentLine.split(regex);
+                if(tempList.size() >= 3)
+                {
+                    this.bigTempRules();
+                }
+                if(splitSting.length == 1)
+                {
+                    this.length1Rules(splitSting,currentLine);
+                }
+                else if(splitSting.length ==2)
+                {
+                    this.length2Rules(splitSting,currentLine);
+                }
+                else
+                {
+                    this.length3Rules(splitSting,currentLine);
+                }
+            }
+
+            bw.close();
+
+        }
+        catch(FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -158,7 +375,7 @@ public class Helper {
      * @param listOfStrings
      * @return
      */
-    public ArrayList<Pattern<Double>> turnListToPattern(ArrayList<String> listOfStrings)
+    /*public ArrayList<Pattern<Double>> turnListToPattern(ArrayList<String> listOfStrings)
     {
         //I'm just going to assume that they are all integers for right now.
         StringTokenizer st;
@@ -191,7 +408,7 @@ public class Helper {
         }
 
         return patterns;
-    }
+    } */
 
     /**
      *
@@ -209,7 +426,7 @@ public class Helper {
      * @param dataSet
      * @return
      */
-    public ArrayList<Pattern<Double>> partitionDataSet(Double percentToPartition, ArrayList<Pattern<Double>> dataSet)
+    /*public ArrayList<Pattern<Double>> partitionDataSet(Double percentToPartition, ArrayList<Pattern<Double>> dataSet)
     {
         ArrayList<Pattern<Double>> newList = new ArrayList<Pattern<Double>>();
         int lengthOfDataSet = dataSet.size();
@@ -221,7 +438,7 @@ public class Helper {
         }
 
         return newList;
-    }
+    }*/
 
     /**
      *

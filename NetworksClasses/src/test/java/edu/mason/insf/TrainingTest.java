@@ -14,13 +14,13 @@ public class TrainingTest {
     AdalineNetwork aNetwork = new AdalineNetwork(.45,4);
     AdalineNode aNode = new AdalineNode();
     ArrayList<String> testData = helper.readFileToMemory(Constants.TEST_FILE);
-    ArrayList<Pattern<Double>> inputPatterns = helper.turnListToPattern(testData);
-    ArrayList<Pattern<Double>> trainingData = helper.partitionDataSet(.1, inputPatterns);
+    //ArrayList<Pattern<Double>> inputPatterns = helper.turnListToPattern(testData);
+    //ArrayList<Pattern<Double>> trainingData = helper.partitionDataSet(.1, inputPatterns);
 
     //@Test
     public void Train()
     {
-        aNetwork.setTrainingData(trainingData);
+        //aNetwork.setTrainingData(trainingData);
         aNetwork.trainNetwork(true);
     }
 

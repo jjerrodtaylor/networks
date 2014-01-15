@@ -11,8 +11,8 @@ public class HelperTest {
 
     Helper helper = new Helper();
 
-    @Test
-    public void testReadFileToMemory()
+    //@Test
+    /*public void testReadFileToMemory()
     {
         ArrayList<String> testData = helper.readFileToMemory(Constants.FILE_NAME);
         ArrayList<Pattern<Double>> testDataAsPattern = helper.turnListToPattern(testData);
@@ -22,6 +22,15 @@ public class HelperTest {
 
         ArrayList<Pattern<Double>> trainingSet = helper.partitionDataSet(.10,testDataAsPattern);
         assertEquals(69, trainingSet.size());
+    }*/
+
+    @Test
+    public void testFormatText()
+    {
+        //helper.formatText(Constants.METAMORPH_ENG_TXT, Constants.METAMORPH_ENG_TXT_FMT,"(?<=[.!?])");
+        helper.formatText(Constants.METAMORPH_ESP_TXT, Constants.METAMORPH_ESP_TXT_FMT,"(?<=[.!?])");
+
+        int i = 0;
     }
 
     @Test
@@ -36,7 +45,6 @@ public class HelperTest {
     {
         ArrayList<String> testData = helper.generateAdalineTrainingData(25);
         helper.writeFile(testData,"testfile.txt");
-        helper.closeFileWriter();
     }
 
     @Test
